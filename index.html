@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="PNK Inmobiliaria — La plataforma inmobiliaria de la Región de Coquimbo. Compra, vende y arrienda propiedades con gestores freelance." />
+  <title>PNK Inmobiliaria — Región de Coquimbo</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="index.html" class="nav-logo" id="logo-principal">
+      <div class="logo-icon">🏛️</div>
+      <div>
+        <span>PNK Inmobiliaria</span>
+        <small>Región de Coquimbo</small>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="btn-nav-outline" id="nav-inicio">Inicio</a>
+      <a href="registro-propietario.html" class="btn-nav-outline" id="nav-reg-propietario">Registrar Propietario</a>
+      <a href="registro-gestor.html" class="btn-nav-outline" id="nav-reg-gestor">Registrar Gestor</a>
+      <a href="login.html" class="btn-nav-primary" id="nav-ingresar">Ingresar</a>
+    </div>
+  </nav>
+
+  <!-- HERO + AUTH -->
+  <section class="top-section">
+    <div class="banner-hero animate-in">
+      <div class="hero-badge">🏠 Nueva Publicación</div>
+      <h1>Tu Hogar Ideal<br />en Coquimbo</h1>
+      <p>Casas, departamentos y terrenos en toda la Región de Coquimbo.<br />Publica, busca y conecta con gestores
+        freelance.</p>
+      <div class="banner-price">$154.000.000</div>
+    </div>
+
+    <div class="auth-card animate-in delay-1">
+      <div class="auth-header">
+        <i class="fas fa-lock"></i>
+        <h3>Acceder a PNK</h3>
+      </div>
+      <form class="auth-form" id="form-auth-home" action="dashboard.html">
+        <div class="input-group">
+          <label for="home-email">Correo Electrónico</label>
+          <input type="email" id="home-email" name="email" placeholder="ejemplo@correo.cl" required />
+        </div>
+        <div class="input-group">
+          <label for="home-password">Contraseña</label>
+          <input type="password" id="home-password" name="password" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn-ingresar" id="btn-ingresar-home">Ingresar al Panel</button>
+        <a href="recuperar.html" class="link-forgot" id="link-olvidar-pass">¿Olvidaste tu contraseña?</a>
+      </form>
+      <div style="padding: 20px 30px; border-top: 1px solid #f0ebe3;">
+        <p style="font-size:0.78rem; color:#9a9080; text-align:center; margin-bottom:12px;">¿No tienes cuenta?</p>
+        <div style="display:flex; gap:8px; flex-direction:column;">
+          <a href="registro-propietario.html" id="link-home-propietario"
+            style="display:flex; align-items:center; gap:10px; padding:11px 14px; border:1px solid #c9922a; border-radius:6px; color:#3b2005; font-size:0.83rem; font-weight:600; transition:all 0.3s;">
+            <i class="fas fa-home" style="color:#c9922a;"></i> Registrarme como Propietario
+          </a>
+          <a href="registro-gestor.html" id="link-home-gestor"
+            style="display:flex; align-items:center; gap:10px; padding:11px 14px; border:1px solid #e0d8cd; border-radius:6px; color:#9a9080; font-size:0.83rem; font-weight:600; transition:all 0.3s;">
+            <i class="fas fa-briefcase" style="color:#c9922a;"></i> Registrarme como Gestor Freelance
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSCADOR -->
+  <div class="buscador-container">
+    <div class="buscador-inner">
+      <span class="label-buscador"><i class="fas fa-search"></i> Buscar Propiedad</span>
+      <div class="select-wrapper">
+        <select name="tipo" id="buscar-tipo">
+          <option value="">Tipo de Propiedad</option>
+          <option>Casa</option>
+          <option>Departamento</option>
+          <option>Terreno</option>
+        </select>
+      </div>
+      <div class="select-wrapper">
+        <select name="provincia" id="buscar-provincia">
+          <option value="">Provincia</option>
+          <option>Elqui</option>
+          <option>Limarí</option>
+          <option>Choapa</option>
+        </select>
+      </div>
+      <div class="select-wrapper">
+        <select name="comuna" id="buscar-comuna">
+          <option value="">Comuna</option>
+          <option>La Serena</option>
+          <option>Coquimbo</option>
+          <option>Ovalle</option>
+          <option>Illapel</option>
+          <option>Los Vilos</option>
+        </select>
+      </div>
+      <div class="select-wrapper">
+        <select name="sector" id="buscar-sector">
+          <option value="">Sector</option>
+          <option>El Milagro</option>
+          <option>Centro</option>
+          <option>Barrio Inglés</option>
+          <option>Las Compañías</option>
+          <option>Av. del Mar</option>
+        </select>
+      </div>
+      <button class="btn-buscar" id="btn-buscar-props"><i class="fas fa-search"></i> Buscar</button>
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-bar-inner">
+      <div class="stat-item animate-in">
+        <span class="num">245</span>
+        <span class="lbl">Propiedades Publicadas</span>
+      </div>
+      <div class="stat-item animate-in delay-1">
+        <span class="num">89</span>
+        <span class="lbl">Propietarios Registrados</span>
+      </div>
+      <div class="stat-item animate-in delay-2">
+        <span class="num">34</span>
+        <span class="lbl">Gestores Freelance</span>
+      </div>
+      <div class="stat-item animate-in delay-3">
+        <span class="num">12</span>
+        <span class="lbl">Propiedades Vendidas</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROPIEDADES -->
+  <section class="propiedades-section">
+    <h2 class="section-title animate-in">Propiedades <span>Destacadas</span></h2>
+    <p class="section-subtitle">Las mejores oportunidades en la Región de Coquimbo</p>
+
+    <div class="props-grid">
+
+      <div class="prop-card animate-in">
+        <div class="prop-card-img">
+          <img src="img/prop-casa-milagro.webp" alt="Casa Sector El Milagro" />
+          <span class="prop-tag">Casa</span>
+          <span class="prop-cod">Cód: C0001</span>
+        </div>
+        <div class="prop-card-body">
+          <h3>Casa Sector El Milagro</h3>
+          <div class="prop-location"><i class="fas fa-map-marker-alt"></i> El Milagro, La Serena — Elqui</div>
+          <div class="prop-features">
+            <span class="prop-feat"><i class="fas fa-bed"></i> 3 Dorm.</span>
+            <span class="prop-feat"><i class="fas fa-bath"></i> 2 Baños</span>
+            <span class="prop-feat"><i class="fas fa-ruler-combined"></i> 120 m²</span>
+          </div>
+          <div class="prop-info">
+            <div class="price-stack">
+              <strong>$154.000.000</strong>
+              <small>UF 3.650</small>
+            </div>
+            <a href="detalle-propiedad.html" class="btn-ver"><i class="bi bi-house"></i> ¡Quiero saber más!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prop-card animate-in delay-1">
+        <div class="prop-card-img">
+          <img src="img/prop-depto-barrio-ingles.webp" alt="Departamento Barrio Inglés" />
+          <span class="prop-tag">Departamento</span>
+          <span class="prop-cod">Cód: C0002</span>
+        </div>
+        <div class="prop-card-body">
+          <h3>Departamento Barrio Inglés</h3>
+          <div class="prop-location"><i class="fas fa-map-marker-alt"></i> Barrio Inglés, La Serena — Elqui</div>
+          <div class="prop-features">
+            <span class="prop-feat"><i class="fas fa-bed"></i> 2 Dorm.</span>
+            <span class="prop-feat"><i class="fas fa-bath"></i> 1 Baño</span>
+            <span class="prop-feat"><i class="fas fa-ruler-combined"></i> 68 m²</span>
+          </div>
+          <div class="prop-info">
+            <div class="price-stack">
+              <strong>$89.000.000</strong>
+              <small>UF 2.110</small>
+            </div>
+            <a href="detalle-depto-barrio-ingles.html" class="btn-ver"><i class="bi bi-house"></i>¡Quiero saber más!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prop-card animate-in delay-2">
+        <div class="prop-card-img">
+          <img src="img/prop-terreno-ovalle.webp" alt="Terreno Sector Centro" />
+          <span class="prop-tag">Terreno</span>
+          <span class="prop-cod">Cód: C0003</span>
+        </div>
+        <div class="prop-card-body">
+          <h3>Terreno Sector Centro</h3>
+          <div class="prop-location"><i class="fas fa-map-marker-alt"></i> Centro, Ovalle — Limarí</div>
+          <div class="prop-features">
+            <span class="prop-feat"><i class="fas fa-ruler-combined"></i> 500 m²</span>
+            <span class="prop-feat"><i class="fas fa-map"></i> Plano</span>
+          </div>
+          <div class="prop-info">
+            <div class="price-stack">
+              <strong>$42.000.000</strong>
+              <small>UF 998</small>
+            </div>
+            <a href="detalle-terreno-ovalle.html" class="btn-ver"><i class="bi bi-house"></i>¡Quiero saber más!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prop-card animate-in">
+        <div class="prop-card-img">
+          <img src="img/prop-casa-companias.webp" alt="Casa Las Compañías" />
+          <span class="prop-tag">Casa</span>
+          <span class="prop-cod">Cód: C0004</span>
+        </div>
+        <div class="prop-card-body">
+          <h3>Casa Las Compañías</h3>
+          <div class="prop-location"><i class="fas fa-map-marker-alt"></i> Las Compañías, La Serena — Elqui</div>
+          <div class="prop-features">
+            <span class="prop-feat"><i class="fas fa-bed"></i> 4 Dorm.</span>
+            <span class="prop-feat"><i class="fas fa-bath"></i> 3 Baños</span>
+            <span class="prop-feat"><i class="fas fa-ruler-combined"></i> 180 m²</span>
+          </div>
+          <div class="prop-info">
+            <div class="price-stack">
+              <strong>$235.000.000</strong>
+              <small>UF 5.570</small>
+            </div>
+            <a href="detalle-casa-companias.html" class="btn-ver">¡Quiero saber más!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prop-card animate-in delay-1">
+        <div class="prop-card-img">
+          <img src="img/prop-depto-av-del-mar.webp" alt="Departamento Av. del Mar" />
+          <span class="prop-tag">Departamento</span>
+          <span class="prop-cod">Cód: C0005</span>
+        </div>
+        <div class="prop-card-body">
+          <h3>Departamento Av. del Mar</h3>
+          <div class="prop-location"><i class="fas fa-map-marker-alt"></i> Av. del Mar, Coquimbo — Elqui</div>
+          <div class="prop-features">
+            <span class="prop-feat"><i class="fas fa-bed"></i> 3 Dorm.</span>
+            <span class="prop-feat"><i class="fas fa-bath"></i> 2 Baños</span>
+            <span class="prop-feat"><i class="fas fa-ruler-combined"></i> 95 m²</span>
+          </div>
+          <div class="prop-info">
+            <div class="price-stack">
+              <strong>$128.000.000</strong>
+              <small>UF 3.040</small>
+            </div>
+            <a href="detalle-depto-av-del-mar.html" class="btn-ver"><i class="bi bi-house"></i>¡Quiero saber más!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prop-card animate-in delay-2">
+        <div class="prop-card-img">
+          <img src="img/prop-terreno-agricola.webp" alt="Terreno Agrícola Limarí" />
+          <span class="prop-tag">Terreno</span>
+          <span class="prop-cod">Cód: C0006</span>
+        </div>
+        <div class="prop-card-body">
+          <h3>Terreno Agrícola Limarí</h3>
+          <div class="prop-location"><i class="fas fa-map-marker-alt"></i> Sector Agrícola, Ovalle — Limarí</div>
+          <div class="prop-features">
+            <span class="prop-feat"><i class="fas fa-ruler-combined"></i> 2.500 m²</span>
+            <span class="prop-feat"><i class="fas fa-water"></i> Con agua</span>
+          </div>
+          <div class="prop-info">
+            <div class="price-stack">
+              <strong>$75.000.000</strong>
+              <small>UF 1.780</small>
+            </div>
+            <a href="detalle-terreno-agricola.html" class="btn-ver"><i class="bi bi-house"></i>¡Quiero saber más!</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-brand-title">🏛️ PNK Inmobiliaria</div>
+        <p>La plataforma inmobiliaria de la Región de Coquimbo. Conectamos propietarios, compradores y gestores
+          freelance.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Plataforma</h4>
+        <a href="index.html" id="footer-inicio">Inicio</a>
+        <a href="registro-propietario.html" id="footer-reg-prop">Registro Propietario</a>
+        <a href="registro-gestor.html" id="footer-reg-gestor">Registro Gestor</a>
+        <a href="login.html" id="footer-login">Ingresar</a>
+      </div>
+      <div class="footer-col">
+        <h4>Propiedades</h4>
+        <a href="detalle-propiedad.html">Casas</a>
+        <a href="detalle-propiedad.html">Departamentos</a>
+        <a href="detalle-propiedad.html">Terrenos</a>
+      </div>
+      <div class="footer-col">
+        <h4>Región Coquimbo</h4>
+        <a href="#">Provincia Elqui</a>
+        <a href="#">Provincia Limarí</a>
+        <a href="#">Provincia Choapa</a>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 PNK Inmobiliaria — Todos los derechos reservados. Región de Coquimbo, Chile.</div>
+  </footer>
+
+</body>
+
+</html>

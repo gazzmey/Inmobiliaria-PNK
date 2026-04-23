@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Gestión de propiedades — PNK Inmobiliaria. CRUD completo de inmuebles en la Región de Coquimbo."/>
+  <title>Gestión de Propiedades — PNK Inmobiliaria</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- Ancla de cierre de modales (sin JS) -->
+<span id="top-page" style="position:absolute;top:0;left:0;"></span>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="index.html" class="nav-logo" id="logo-propiedades">
+    <div class="logo-icon">🏛️</div>
+    <div>
+      <span>PNK Inmobiliaria</span>
+      <small>Panel de Administración</small>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="dashboard.html"   class="btn-nav-outline" id="nav-dashboard">Dashboard</a>
+    <a href="propiedades.html" class="btn-nav-outline" id="nav-propiedades"
+       style="color:#e8b84b; border-color:#e8b84b;">Propiedades</a>
+    <a href="usuarios.html"    class="btn-nav-outline" id="nav-usuarios">Usuarios</a>
+    <a href="index.html"       class="btn-nav-primary" id="nav-salir">
+      <i class="fas fa-sign-out-alt"></i> Salir
+    </a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     MODAL: NUEVA / EDITAR PROPIEDAD  (CSS :target — sin JS)
+     Abre:  <a href="#modalPropiedad">
+     Cierra: <a href="#top-page">
+     ============================================================ -->
+<div class="form-modal" id="modalPropiedad">
+  <div class="form-modal-content">
+
+    <div class="form-modal-header">
+      <h2 id="modal-prop-title">
+        <i class="fas fa-plus-circle"></i> Nueva Propiedad
+      </h2>
+      <a href="#top-page" class="btn-close-modal" id="btn-close-modal-prop"
+         aria-label="Cerrar modal">×</a>
+    </div>
+
+    <form id="form-propiedad-modal" method="POST" enctype="multipart/form-data"
+          style="padding:25px; display:flex; flex-direction:column; gap:18px;">
+
+      <!-- Tipo y Ubicación -->
+      <p class="form-section-title"><i class="fas fa-map-marker-alt"></i> Tipo y Ubicación</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="mp-tipo">Tipo de Propiedad *</label>
+          <select id="mp-tipo" name="tipo" required>
+            <option value="">Selecciona tipo</option>
+            <option value="casa">Casa</option>
+            <option value="departamento">Departamento</option>
+            <option value="terreno">Terreno</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mp-provincia">Provincia *</label>
+          <select id="mp-provincia" name="provincia" required>
+            <option value="">Selecciona provincia</option>
+            <option value="elqui">Elqui</option>
+            <option value="limari">Limarí</option>
+            <option value="choapa">Choapa</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="mp-comuna">Comuna *</label>
+          <select id="mp-comuna" name="comuna" required>
+            <option value="">Selecciona comuna</option>
+            <option value="la-serena">La Serena</option>
+            <option value="coquimbo">Coquimbo</option>
+            <option value="ovalle">Ovalle</option>
+            <option value="illapel">Illapel</option>
+            <option value="los-vilos">Los Vilos</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mp-sector">Sector *</label>
+          <input type="text" id="mp-sector" name="sector" placeholder="Ej: El Milagro, Centro" required/>
+        </div>
+      </div>
+
+      <!-- Características -->
+      <p class="form-section-title"><i class="fas fa-home"></i> Características</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="mp-dormitorios">Dormitorios</label>
+          <input type="number" id="mp-dormitorios" name="dormitorios" min="0" placeholder="0"/>
+        </div>
+        <div class="form-group">
+          <label for="mp-banos">Baños</label>
+          <input type="number" id="mp-banos" name="banos" min="0" placeholder="0"/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="mp-area-terreno">Área Total Terreno (m²) *</label>
+          <input type="number" id="mp-area-terreno" name="area_terreno" step="0.01" placeholder="0.00" required/>
+        </div>
+        <div class="form-group">
+          <label for="mp-area-construida">Área Construida (m²)</label>
+          <input type="number" id="mp-area-construida" name="area_construida" step="0.01" placeholder="0.00"/>
+        </div>
+      </div>
+
+      <!-- Precio -->
+      <p class="form-section-title"><i class="fas fa-dollar-sign"></i> Precio</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="mp-precio-clp">Precio en $ (CLP) *</label>
+          <input type="number" id="mp-precio-clp" name="precio_pesos" placeholder="154000000" required/>
+        </div>
+        <div class="form-group">
+          <label for="mp-precio-uf">Precio en UF *</label>
+          <input type="number" id="mp-precio-uf" name="precio_uf" step="0.01" placeholder="3650.00" required/>
+        </div>
+      </div>
+
+      <!-- Descripción -->
+      <div class="form-group">
+        <label for="mp-descripcion">Descripción de la Propiedad *</label>
+        <textarea id="mp-descripcion" name="descripcion" rows="3"
+                  placeholder="Describe la propiedad, sus características y aspectos destacados..." required></textarea>
+      </div>
+
+      <!-- Fecha de publicación -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="mp-fecha-pub">Fecha de Publicación</label>
+          <input type="date" id="mp-fecha-pub" name="fecha_publicacion"/>
+        </div>
+        <div class="form-group">
+          <label for="mp-estado">Estado de la Publicación *</label>
+          <select id="mp-estado" name="estado" required>
+            <option value="activo">Activo</option>
+            <option value="inactivo">Inactivo</option>
+            <option value="vendida">Vendida</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Amenidades (checkboxes — HTML nativo, sin JS) -->
+      <p class="form-section-title"><i class="fas fa-star"></i> Cuenta con:</p>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="mp-bodega"           name="bodega">          <i class="fas fa-warehouse"></i> Bodega</label>
+        <label><input type="checkbox" id="mp-estacionamiento"  name="estacionamiento"> <i class="fas fa-car"></i> Estacionamiento</label>
+        <label><input type="checkbox" id="mp-logia"            name="logia">           <i class="fas fa-tshirt"></i> Logia</label>
+        <label><input type="checkbox" id="mp-cocina"           name="cocina_amoblada"> <i class="fas fa-utensils"></i> Cocina Amoblada</label>
+        <label><input type="checkbox" id="mp-antejardin"       name="antejardin">      <i class="fas fa-seedling"></i> Antejardín</label>
+        <label><input type="checkbox" id="mp-patio"            name="patio_trasero">   <i class="fas fa-tree"></i> Patio Trasero</label>
+        <label><input type="checkbox" id="mp-piscina"          name="piscina">         <i class="fas fa-swimming-pool"></i> Piscina</label>
+      </div>
+
+      <!-- Propietario y Fotografías -->
+      <div class="form-group">
+        <label for="mp-propietario">Propietario Asociado *</label>
+        <select id="mp-propietario" name="propietario_id" required>
+          <option value="">Selecciona propietario</option>
+          <option value="1">María López Fernández (23.456.789-0)</option>
+          <option value="2">Roberto Núñez Vargas (56.789.012-3)</option>
+          <option value="3">Ana Martínez Herrera (67.890.123-4)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="mp-fotos">Fotografías (máximo 10 imágenes)</label>
+        <input type="file" id="mp-fotos" name="fotografias" multiple accept="image/*"/>
+        <small>Formatos: JPG, PNG, WEBP. Máx 10 fotos. La primera imagen será la portada.</small>
+      </div>
+
+      <button type="submit" class="btn-submit" id="btn-guardar-propiedad">
+        <i class="fas fa-save"></i> Guardar Propiedad
+      </button>
+
+    </form>
+  </div>
+</div><!-- /modalPropiedad -->
+
+
+<!-- ============================================================
+     CONTENIDO PRINCIPAL
+     ============================================================ -->
+<section class="crud-container animate-in">
+
+  <div class="crud-header">
+    <div>
+      <h1>Gestión de Propiedades</h1>
+      <p>CRUD completo de inmuebles: Casas, Departamentos y Terrenos — Región de Coquimbo</p>
+    </div>
+    <!-- Abre modal sin JS -->
+    <a href="#modalPropiedad" class="btn-nuevo" id="btn-nueva-propiedad">
+      <i class="fas fa-plus-circle"></i> Nueva Propiedad
+    </a>
+  </div>
+
+  <!-- FILTROS VISUALES (sin JS) -->
+  <div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
+    <span style="padding:8px 18px; border-radius:20px; border:1px solid #c9922a; background:#c9922a; color:#0e0d0b; font-size:0.8rem; font-weight:700;">Todas (245)</span>
+    <span style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#b45309; font-size:0.8rem;">🏠 Casas (120)</span>
+    <span style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#1d4ed8; font-size:0.8rem;">🏢 Departamentos (85)</span>
+    <span style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#2e7d32; font-size:0.8rem;">🌱 Terrenos (40)</span>
+    <span style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#9a9080; font-size:0.8rem;">✅ Activas (221)</span>
+    <span style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#9a9080; font-size:0.8rem;">🔒 Vendidas (12)</span>
+  </div>
+
+  <div class="table-container">
+    <div class="table-toolbar">
+      <div class="table-search">
+        <i class="fas fa-search"></i>
+        <input type="text" id="search-props" placeholder="Buscar por código, tipo, ubicación..."/>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button id="btn-exportar-props" style="padding:8px 14px; background:#f5efe6; border:1px solid #e0d8cd; border-radius:6px; font-size:0.8rem; cursor:pointer;">
+          <i class="fas fa-download"></i> Exportar
+        </button>
+      </div>
+    </div>
+
+    <table class="crud-table" id="tabla-propiedades">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Tipo</th>
+          <th>Ubicación</th>
+          <th>Dorm.</th>
+          <th>Baños</th>
+          <th>Área (m²)</th>
+          <th>Precio ($)</th>
+          <th>Precio (UF)</th>
+          <th>Estado</th>
+          <th>Publicación</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-propiedades">
+
+        <tr>
+          <td><strong>C0001</strong></td>
+          <td><span class="badge badge-tipo-casa">Casa</span></td>
+          <td>El Milagro, La Serena<br/><small style="color:#9a9080;">Elqui</small></td>
+          <td>3</td><td>2</td><td>120 m²</td>
+          <td>$154.000.000</td><td>3.650 UF</td>
+          <td><span class="badge badge-activo">Activo</span></td>
+          <td>10/04/2026</td>
+          <td class="action-buttons">
+            <a href="detalle-propiedad.html" class="btn-ver-table" title="Ver detalle" id="btn-ver-p1"><i class="fas fa-eye"></i></a>
+            <a href="#modalPropiedad" class="btn-editar" title="Editar" id="btn-edit-p1"><i class="fas fa-edit"></i></a>
+            <button class="btn-eliminar" title="Eliminar" id="btn-del-p1"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>C0002</strong></td>
+          <td><span class="badge badge-tipo-depto">Departamento</span></td>
+          <td>Barrio Inglés, La Serena<br/><small style="color:#9a9080;">Elqui</small></td>
+          <td>2</td><td>1</td><td>68 m²</td>
+          <td>$89.000.000</td><td>2.110 UF</td>
+          <td><span class="badge badge-activo">Activo</span></td>
+          <td>05/04/2026</td>
+          <td class="action-buttons">
+            <a href="detalle-propiedad.html" class="btn-ver-table" title="Ver detalle" id="btn-ver-p2"><i class="fas fa-eye"></i></a>
+            <a href="#modalPropiedad" class="btn-editar" title="Editar" id="btn-edit-p2"><i class="fas fa-edit"></i></a>
+            <button class="btn-eliminar" title="Eliminar" id="btn-del-p2"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>C0003</strong></td>
+          <td><span class="badge badge-tipo-terreno">Terreno</span></td>
+          <td>Centro, Ovalle<br/><small style="color:#9a9080;">Limarí</small></td>
+          <td>—</td><td>—</td><td>500 m²</td>
+          <td>$42.000.000</td><td>998 UF</td>
+          <td><span class="badge badge-activo">Activo</span></td>
+          <td>01/03/2026</td>
+          <td class="action-buttons">
+            <a href="detalle-propiedad.html" class="btn-ver-table" title="Ver detalle" id="btn-ver-p3"><i class="fas fa-eye"></i></a>
+            <a href="#modalPropiedad" class="btn-editar" title="Editar" id="btn-edit-p3"><i class="fas fa-edit"></i></a>
+            <button class="btn-eliminar" title="Eliminar" id="btn-del-p3"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>C0004</strong></td>
+          <td><span class="badge badge-tipo-casa">Casa</span></td>
+          <td>Las Compañías, La Serena<br/><small style="color:#9a9080;">Elqui</small></td>
+          <td>4</td><td>3</td><td>180 m²</td>
+          <td>$235.000.000</td><td>5.570 UF</td>
+          <td><span class="badge badge-vendida">Vendida</span></td>
+          <td>15/01/2026</td>
+          <td class="action-buttons">
+            <a href="detalle-propiedad.html" class="btn-ver-table" title="Ver detalle" id="btn-ver-p4"><i class="fas fa-eye"></i></a>
+            <a href="#modalPropiedad" class="btn-editar" title="Editar" id="btn-edit-p4"><i class="fas fa-edit"></i></a>
+            <button class="btn-eliminar" title="Eliminar" id="btn-del-p4"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>C0005</strong></td>
+          <td><span class="badge badge-tipo-depto">Departamento</span></td>
+          <td>Av. del Mar, Coquimbo<br/><small style="color:#9a9080;">Elqui</small></td>
+          <td>3</td><td>2</td><td>95 m²</td>
+          <td>$128.000.000</td><td>3.040 UF</td>
+          <td><span class="badge badge-activo">Activo</span></td>
+          <td>20/04/2026</td>
+          <td class="action-buttons">
+            <a href="detalle-propiedad.html" class="btn-ver-table" title="Ver detalle" id="btn-ver-p5"><i class="fas fa-eye"></i></a>
+            <a href="#modalPropiedad" class="btn-editar" title="Editar" id="btn-edit-p5"><i class="fas fa-edit"></i></a>
+            <button class="btn-eliminar" title="Eliminar" id="btn-del-p5"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>C0006</strong></td>
+          <td><span class="badge badge-tipo-terreno">Terreno</span></td>
+          <td>Sector Agrícola, Ovalle<br/><small style="color:#9a9080;">Limarí</small></td>
+          <td>—</td><td>—</td><td>2.500 m²</td>
+          <td>$75.000.000</td><td>1.780 UF</td>
+          <td><span class="badge badge-inactivo">Inactivo</span></td>
+          <td>10/02/2026</td>
+          <td class="action-buttons">
+            <a href="detalle-propiedad.html" class="btn-ver-table" title="Ver detalle" id="btn-ver-p6"><i class="fas fa-eye"></i></a>
+            <a href="#modalPropiedad" class="btn-editar" title="Editar" id="btn-edit-p6"><i class="fas fa-edit"></i></a>
+            <button class="btn-eliminar" title="Eliminar" id="btn-del-p6"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAGINACIÓN -->
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; font-size:0.85rem; color:#9a9080;">
+    <span>Mostrando 1–6 de 245 propiedades</span>
+    <div style="display:flex; gap:6px;">
+      <button style="padding:7px 12px; border:1px solid #e0d8cd; background:white; border-radius:5px; cursor:pointer;">←</button>
+      <button style="padding:7px 12px; border:1px solid #c9922a; background:#c9922a; color:#0e0d0b; border-radius:5px; font-weight:700; cursor:pointer;">1</button>
+      <button style="padding:7px 12px; border:1px solid #e0d8cd; background:white; border-radius:5px; cursor:pointer;">2</button>
+      <button style="padding:7px 12px; border:1px solid #e0d8cd; background:white; border-radius:5px; cursor:pointer;">3</button>
+      <button style="padding:7px 12px; border:1px solid #e0d8cd; background:white; border-radius:5px; cursor:pointer;">→</button>
+    </div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy" style="border-top:none; padding-top:0;">
+    © 2026 PNK Inmobiliaria — Panel Administrativo. Todos los derechos reservados.
+  </div>
+</footer>
+
+<!-- SIN JAVASCRIPT -->
+
+</body>
+</html>

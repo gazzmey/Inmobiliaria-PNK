@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Gestión de usuarios — PNK Inmobiliaria. CRUD de Administradores, Propietarios y Gestores Freelance."/>
+  <title>Gestión de Usuarios — PNK Inmobiliaria</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!--
+  ANCLA DE CIERRE (sin JS).
+  Los botones "cerrar modal" apuntan a #top-page
+  para quitar el :target del modal y cerrarlo.
+-->
+<span id="top-page" style="position:absolute;top:0;left:0;"></span>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="index.html" class="nav-logo" id="logo-usuarios">
+    <div class="logo-icon">🏛️</div>
+    <div>
+      <span>PNK Inmobiliaria</span>
+      <small>Panel de Administración</small>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="dashboard.html"  class="btn-nav-outline" id="nav-dashboard">Dashboard</a>
+    <a href="propiedades.html" class="btn-nav-outline" id="nav-propiedades">Propiedades</a>
+    <a href="usuarios.html"   class="btn-nav-outline" id="nav-usuarios"
+       style="color:#e8b84b; border-color:#e8b84b;">Usuarios</a>
+    <a href="index.html"      class="btn-nav-primary" id="nav-salir">
+      <i class="fas fa-sign-out-alt"></i> Salir
+    </a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     MODAL: NUEVO / EDITAR USUARIO  (CSS :target — sin JS)
+     Se abre con  <a href="#modalUsuario">
+     Se cierra con <a href="#top-page">
+     ============================================================ -->
+<div class="form-modal" id="modalUsuario">
+  <div class="form-modal-content">
+
+    <div class="form-modal-header">
+      <h2 id="modal-usuario-title">
+        <i class="fas fa-user-plus"></i> Nuevo Usuario
+      </h2>
+      <!-- Cierre: quita el :target apuntando al ancla top-page -->
+      <a href="#top-page" class="btn-close-modal" id="btn-close-modal-usuario"
+         aria-label="Cerrar modal">×</a>
+    </div>
+
+    <form id="form-usuario-modal" method="POST" style="padding:25px; display:flex; flex-direction:column; gap:18px;">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="modal-u-rut">RUT *</label>
+          <input type="text" id="modal-u-rut" name="rut" placeholder="12.345.678-9" required/>
+        </div>
+        <div class="form-group">
+          <label for="modal-u-nombres">Nombres *</label>
+          <input type="text" id="modal-u-nombres" name="nombres" placeholder="Nombre completo" required/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="modal-u-ap-paterno">Apellido Paterno *</label>
+          <input type="text" id="modal-u-ap-paterno" name="apellido_paterno" placeholder="Apellido Paterno" required/>
+        </div>
+        <div class="form-group">
+          <label for="modal-u-ap-materno">Apellido Materno</label>
+          <input type="text" id="modal-u-ap-materno" name="apellido_materno" placeholder="Apellido Materno"/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="modal-u-email">Correo Electrónico *</label>
+          <input type="email" id="modal-u-email" name="email" placeholder="ejemplo@correo.cl" required/>
+        </div>
+        <div class="form-group">
+          <label for="modal-u-telefono">Teléfono</label>
+          <input type="tel" id="modal-u-telefono" name="telefono" placeholder="+56 9 1234 5678"/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="modal-u-fecha">Fecha de Nacimiento</label>
+          <input type="date" id="modal-u-fecha" name="fecha_nacimiento"/>
+        </div>
+        <div class="form-group">
+          <label for="modal-u-sexo">Sexo</label>
+          <select id="modal-u-sexo" name="sexo">
+            <option value="">Selecciona</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+            <option value="O">Otro</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="modal-u-rol">Rol *</label>
+          <select id="modal-u-rol" name="rol" required>
+            <option value="">Selecciona un rol</option>
+            <option value="admin">Administrador</option>
+            <option value="propietario">Propietario</option>
+            <option value="gestor">Gestor Inmobiliario Free</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="modal-u-estado">Estado *</label>
+          <select id="modal-u-estado" name="estado" required>
+            <option value="activo">Activo</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="inactivo">Inactivo</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Campos extra: siempre visibles (sin JS toggle) -->
+      <div class="form-group">
+        <label for="modal-u-bienes">N° Propiedad Bienes Raíces <small style="text-transform:none; letter-spacing:0;">(solo Propietarios)</small></label>
+        <input type="text" id="modal-u-bienes" name="nro_bienes" placeholder="BR-2025-00123456"/>
+      </div>
+
+      <div class="form-group">
+        <label for="modal-u-penka">PENKA_ID <small style="text-transform:none; letter-spacing:0;">(solo Gestores — asignado por admin)</small></label>
+        <input type="text" id="modal-u-penka" name="penka_id" placeholder="PENKA-00000"/>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="modal-u-password">Contraseña</label>
+          <input type="password" id="modal-u-password" name="password" placeholder="Nueva contraseña"/>
+          <small>Dejar vacío para no cambiar al editar</small>
+        </div>
+        <div class="form-group">
+          <label for="modal-u-confirm">Confirmar Contraseña</label>
+          <input type="password" id="modal-u-confirm" name="confirm_password" placeholder="Repetir contraseña"/>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit" id="btn-guardar-usuario">
+        <i class="fas fa-save"></i> Guardar Usuario
+      </button>
+    </form>
+
+  </div>
+</div><!-- /modalUsuario -->
+
+
+<!-- ============================================================
+     CONTENIDO PRINCIPAL
+     ============================================================ -->
+<section class="crud-container animate-in">
+
+  <div class="crud-header">
+    <div>
+      <h1>Gestión de Usuarios</h1>
+      <p>Administra Propietarios, Gestores Freelance y Administradores del sistema</p>
+    </div>
+    <!-- Abre modal sin JS: href="#modalUsuario" -->
+    <a href="#modalUsuario" class="btn-nuevo" id="btn-nuevo-usuario">
+      <i class="fas fa-user-plus"></i> Nuevo Usuario
+    </a>
+  </div>
+
+  <!-- FILTROS (visuales — sin funcionalidad JS) -->
+  <div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
+    <span id="filtro-todos"   style="padding:8px 18px; border-radius:20px; border:1px solid #c9922a; background:#c9922a; color:#0e0d0b; font-size:0.8rem; font-weight:700;">Todos (178)</span>
+    <span id="filtro-admin"   style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#9a9080; font-size:0.8rem;">Admins (1)</span>
+    <span id="filtro-prop"    style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#9a9080; font-size:0.8rem;">Propietarios (89)</span>
+    <span id="filtro-gestor"  style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#9a9080; font-size:0.8rem;">Gestores (34)</span>
+    <span id="filtro-pend"    style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#b45309; font-size:0.8rem;">⚠ Pendientes (5)</span>
+  </div>
+
+  <div class="table-container">
+    <div class="table-toolbar">
+      <!-- Búsqueda visual (sin filtrado JS) -->
+      <div class="table-search">
+        <i class="fas fa-search"></i>
+        <input type="text" id="search-usuarios" placeholder="Buscar por nombre, RUT o correo..."/>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button id="btn-exportar-usuarios" style="padding:8px 14px; background:#f5efe6; border:1px solid #e0d8cd; border-radius:6px; font-size:0.8rem; cursor:pointer;">
+          <i class="fas fa-download"></i> Exportar
+        </button>
+      </div>
+    </div>
+
+    <table class="crud-table" id="tabla-usuarios">
+      <thead>
+        <tr>
+          <th>RUT</th>
+          <th>Nombre Completo</th>
+          <th>Correo Electrónico</th>
+          <th>Teléfono</th>
+          <th>Rol</th>
+          <th>Estado</th>
+          <th>Registro</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-usuarios">
+
+        <tr>
+          <td><strong>12.345.678-9</strong></td>
+          <td>Juan García Rodríguez</td>
+          <td>juan@correo.cl</td>
+          <td>+56 9 1234 5678</td>
+          <td><span class="badge badge-admin">Administrador</span></td>
+          <td><span class="badge badge-activo">Activo</span></td>
+          <td>01/01/2025</td>
+          <td class="action-buttons">
+            <!-- Cada editar abre el mismo modal con :target -->
+            <a href="#modalUsuario" class="btn-editar" title="Editar" id="btn-edit-u1"><i class="fas fa-edit"></i></a>
+            <button class="btn-eliminar" title="Desactivar" id="btn-del-u1"><i class="fas fa-ban"></i></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>23.456.789-0</strong></td>
+          <td>María López Fernández</td>
+          <td>maria@correo.cl</td>
+          <td>+56 9 8765 4321</td>
+          <td><span class="badge badge-propietario">Propietario</span></td>
+          <td><span class="badge badge-activo">Activo</span></td>
+          <td>15/02/2025</td>
+          <td class="action-buttons">
+            <a href="#modalUsuario" class="btn-editar" title="Editar" id="btn-edit-u2"><i class="fas fa-edit"></i></a>
+            <button class="btn-eliminar" title="Dar de Baja" id="btn-del-u2"><i class="fas fa-ban"></i></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>34.567.890-1</strong></td>
+          <td>Carlos Muñoz Silva</td>
+          <td>carlos@correo.cl</td>
+          <td>+56 9 5678 9012</td>
+          <td><span class="badge badge-gestor">Gestor Free</span></td>
+          <td><span class="badge badge-activo">Activo</span></td>
+          <td>10/03/2025</td>
+          <td class="action-buttons">
+            <a href="#modalUsuario" class="btn-editar" title="Editar" id="btn-edit-u3"><i class="fas fa-edit"></i></a>
+            <button class="btn-eliminar" title="Dar de Baja" id="btn-del-u3"><i class="fas fa-ban"></i></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>45.678.901-2</strong></td>
+          <td>Patricia González Díaz</td>
+          <td>patricia@correo.cl</td>
+          <td>+56 9 3456 7890</td>
+          <td><span class="badge badge-gestor">Gestor Free</span></td>
+          <td><span class="badge badge-pendiente">Pendiente</span></td>
+          <td>18/04/2026</td>
+          <td class="action-buttons">
+            <button class="btn-activar" title="Activar" id="btn-act-u4"><i class="fas fa-check"></i></button>
+            <a href="#modalUsuario" class="btn-editar" title="Editar" id="btn-edit-u4"><i class="fas fa-edit"></i></a>
+            <button class="btn-eliminar" title="Rechazar" id="btn-del-u4"><i class="fas fa-times"></i></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>56.789.012-3</strong></td>
+          <td>Roberto Núñez Vargas</td>
+          <td>roberto@correo.cl</td>
+          <td>+56 9 9876 5432</td>
+          <td><span class="badge badge-propietario">Propietario</span></td>
+          <td><span class="badge badge-inactivo">Inactivo</span></td>
+          <td>05/01/2025</td>
+          <td class="action-buttons">
+            <button class="btn-activar" title="Reactivar" id="btn-act-u5"><i class="fas fa-redo"></i></button>
+            <a href="#modalUsuario" class="btn-editar" title="Editar" id="btn-edit-u5"><i class="fas fa-edit"></i></a>
+            <button class="btn-eliminar" title="Eliminar" id="btn-del-u5"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>67.890.123-4</strong></td>
+          <td>Ana Martínez Herrera</td>
+          <td>ana@correo.cl</td>
+          <td>+56 9 2345 6789</td>
+          <td><span class="badge badge-propietario">Propietario</span></td>
+          <td><span class="badge badge-pendiente">Pendiente</span></td>
+          <td>20/04/2026</td>
+          <td class="action-buttons">
+            <button class="btn-activar" title="Activar" id="btn-act-u6"><i class="fas fa-check"></i></button>
+            <a href="#modalUsuario" class="btn-editar" title="Editar" id="btn-edit-u6"><i class="fas fa-edit"></i></a>
+            <button class="btn-eliminar" title="Rechazar" id="btn-del-u6"><i class="fas fa-times"></i></button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAGINACIÓN -->
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; font-size:0.85rem; color:#9a9080;">
+    <span>Mostrando 1–6 de 178 usuarios</span>
+    <div style="display:flex; gap:6px;">
+      <button style="padding:7px 12px; border:1px solid #e0d8cd; background:white; border-radius:5px; cursor:pointer;">←</button>
+      <button style="padding:7px 12px; border:1px solid #c9922a; background:#c9922a; color:#0e0d0b; border-radius:5px; font-weight:700; cursor:pointer;">1</button>
+      <button style="padding:7px 12px; border:1px solid #e0d8cd; background:white; border-radius:5px; cursor:pointer;">2</button>
+      <button style="padding:7px 12px; border:1px solid #e0d8cd; background:white; border-radius:5px; cursor:pointer;">3</button>
+      <button style="padding:7px 12px; border:1px solid #e0d8cd; background:white; border-radius:5px; cursor:pointer;">→</button>
+    </div>
+  </div>
+
+</section><!-- /crud-container -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy" style="border-top:none; padding-top:0;">
+    © 2026 PNK Inmobiliaria — Panel Administrativo. Todos los derechos reservados.
+  </div>
+</footer>
+
+<!-- SIN JAVASCRIPT -->
+
+</body>
+</html>

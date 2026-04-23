@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Ingresa a tu cuenta en PNK Inmobiliaria o recupera tu contraseña."/>
+  <title>Ingresar / Recuperar Contraseña — PNK Inmobiliaria</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- ANCLA CIERRE MODAL (sin JS) -->
+<span id="top-page" style="position:absolute;top:0;"></span>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="index.html" class="nav-logo" id="logo-login">
+    <div class="logo-icon">🏛️</div>
+    <div>
+      <span>PNK Inmobiliaria</span>
+      <small>Región de Coquimbo</small>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html"                   class="btn-nav-outline" id="nav-inicio">Inicio</a>
+    <a href="registro-propietario.html"    class="btn-nav-outline" id="nav-reg-prop">Registrar Propietario</a>
+    <a href="registro-gestor.html"         class="btn-nav-outline" id="nav-reg-gestor">Registrar Gestor</a>
+    <a href="login.html"                   class="btn-nav-primary" id="nav-ingresar">Ingresar</a>
+  </div>
+</nav>
+
+<!-- ================================================================
+     PÁGINA LOGIN — PESTAÑAS CON RADIO INPUTS (SIN JAVASCRIPT)
+     ================================================================ -->
+<section class="form-container" style="align-items:flex-start; padding-top:60px;">
+  <div class="form-wrapper animate-in">
+
+    <!--
+      TRUCO CSS: los 2 radio inputs deben estar ANTES de .tab-bar y
+      .tab-pane-* para que el selector ~ (hermano general) funcione.
+    -->
+    <input type="radio" name="login-tab" id="rb-login"   class="tab-radio" checked/>
+    <input type="radio" name="login-tab" id="rb-recover" class="tab-radio"/>
+
+    <!-- BARRA DE PESTAÑAS -->
+    <div class="tab-bar">
+      <label for="rb-login"   class="tab-label" id="tab-label-login">
+        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+      </label>
+      <label for="rb-recover" class="tab-label" id="tab-label-recover">
+        <i class="fas fa-key"></i> Recuperar Contraseña
+      </label>
+    </div>
+
+    <!-- ==================== -->
+    <!-- PANEL: LOGIN         -->
+    <!-- ==================== -->
+    <div class="tab-pane-login">
+      <div class="form-header" style="border-radius:0;">
+        <i class="fas fa-lock"></i>
+        <h1>Bienvenido de Vuelta</h1>
+        <p>Ingresa a tu cuenta en PNK Inmobiliaria</p>
+      </div>
+
+      <form class="form-main" id="form-login" action="dashboard.html" method="GET">
+        <div class="alert alert-info" role="alert">
+          <i class="fas fa-info-circle"></i>
+          <span>Ingresa con las credenciales de Propietario, Gestor o Administrador.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="login-email">Correo Electrónico</label>
+          <input type="email" id="login-email" name="email" placeholder="ejemplo@correo.cl" required/>
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Contraseña</label>
+          <input type="password" id="login-password" name="password" placeholder="••••••••" required/>
+        </div>
+
+        <div class="form-checkbox">
+          <input type="checkbox" id="login-remember" name="remember"/>
+          <label for="login-remember">Recordarme en este dispositivo</label>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btn-login-submit">
+          <i class="fas fa-sign-in-alt"></i> Ingresar al Panel
+        </button>
+
+        <!--
+          Para ir a la pestaña de recuperar sin JS:
+          usamos <label> que activa el radio #rb-recover
+        -->
+        <div class="form-links">
+          <span>¿Olvidaste tu clave?</span>
+          <label for="rb-recover" class="link-forgot" style="cursor:pointer;">
+            Recupérala aquí
+          </label>
+        </div>
+      </form>
+
+      <div class="form-divider" style="margin:0 40px;">O crea tu cuenta</div>
+
+      <div class="form-footer">
+        <p>¿Eres nuevo en PNK Inmobiliaria?</p>
+        <div class="btn-group">
+          <a href="registro-propietario.html" class="btn-secondary" id="link-login-prop">
+            <i class="fas fa-home"></i> Registrarme como Propietario
+          </a>
+          <a href="registro-gestor.html" class="btn-secondary" id="link-login-gestor">
+            <i class="fas fa-briefcase"></i> Registrarme como Gestor
+          </a>
+        </div>
+      </div>
+    </div><!-- /tab-pane-login -->
+
+
+    <!-- ======================== -->
+    <!-- PANEL: RECUPERAR CLAVE   -->
+    <!-- ======================== -->
+    <div class="tab-pane-recover">
+      <div class="form-header" style="border-radius:0;">
+        <i class="fas fa-key"></i>
+        <h1>Recuperar Contraseña</h1>
+        <p>Sigue los pasos para restablecer tu acceso</p>
+      </div>
+
+      <!--
+        PASOS con radio inputs (sin JS).
+        Los radios step-radio deben estar ANTES de los paneles.
+      -->
+      <input type="radio" name="recover-step" id="rs-1" class="step-radio" checked/>
+      <input type="radio" name="recover-step" id="rs-2" class="step-radio"/>
+      <input type="radio" name="recover-step" id="rs-3" class="step-radio"/>
+
+      <!-- INDICADORES DE PASO -->
+      <div class="recover-steps" style="display:flex; border-bottom:1px solid #f0ebe3;">
+        <div class="step-ind recover-step" style="flex:1; text-align:center; padding:14px;">
+          <div class="recover-step-num" style="display:block;">1</div>
+          <span style="font-size:0.75rem;">Verificar Correo</span>
+        </div>
+        <div class="step-ind recover-step" style="flex:1; text-align:center; padding:14px;">
+          <div class="recover-step-num" style="display:block;">2</div>
+          <span style="font-size:0.75rem;">Código</span>
+        </div>
+        <div class="step-ind recover-step" style="flex:1; text-align:center; padding:14px;">
+          <div class="recover-step-num" style="display:block;">3</div>
+          <span style="font-size:0.75rem;">Nueva Contraseña</span>
+        </div>
+      </div>
+
+      <!-- PASO 1: Correo -->
+      <div class="recover-pane recover-pane-1 form-main">
+        <div class="alert alert-info">
+          <i class="fas fa-envelope"></i>
+          <span>Ingresa tu correo registrado. Te enviaremos un código de verificación.</span>
+        </div>
+        <div class="form-group">
+          <label for="recover-email">Correo Electrónico Registrado</label>
+          <input type="email" id="recover-email" name="recover_email" placeholder="ejemplo@correo.cl" required/>
+        </div>
+        <!--
+          Botón "Enviar Código" → activa rs-2 (muestra paso 2)
+          usando label como botón (sin JS)
+        -->
+        <label for="rs-2" class="btn-submit" id="btn-recover-step1" style="text-align:center; display:block; cursor:pointer;">
+          <i class="fas fa-paper-plane"></i> Enviar Código de Verificación
+        </label>
+        <div class="form-links">
+          <label for="rb-login" class="link-forgot" style="cursor:pointer;">
+            <i class="fas fa-arrow-left"></i> Volver al Login
+          </label>
+        </div>
+      </div>
+
+      <!-- PASO 2: Código -->
+      <div class="recover-pane recover-pane-2 form-main">
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle"></i>
+          <span>Código enviado a tu correo. Revisa bandeja de entrada y spam.</span>
+        </div>
+        <div class="form-group">
+          <label for="recover-code">Código de Verificación (6 dígitos)</label>
+          <input type="text" id="recover-code" name="recover_code" placeholder="000000"
+                 maxlength="6" style="letter-spacing:8px; font-size:1.5rem; text-align:center;" required/>
+        </div>
+        <label for="rs-3" class="btn-submit" id="btn-recover-step2" style="text-align:center; display:block; cursor:pointer;">
+          <i class="fas fa-check"></i> Verificar Código
+        </label>
+        <div class="form-links">
+          <label for="rs-1" class="link-forgot" style="cursor:pointer;">
+            ¿No recibiste el código? Reenviar
+          </label>
+        </div>
+      </div>
+
+      <!-- PASO 3: Nueva contraseña -->
+      <div class="recover-pane recover-pane-3 form-main">
+        <div class="alert alert-success">
+          <i class="fas fa-shield-alt"></i>
+          <span>Código verificado. Ahora crea tu nueva contraseña.</span>
+        </div>
+        <div class="form-group">
+          <label for="recover-newpass">Nueva Contraseña</label>
+          <input type="password" id="recover-newpass" name="new_password" placeholder="Mínimo 8 caracteres" required/>
+        </div>
+        <div class="form-group">
+          <label for="recover-confirm">Confirmar Nueva Contraseña</label>
+          <input type="password" id="recover-confirm" name="confirm_password" placeholder="Confirma tu contraseña" required/>
+        </div>
+        <a href="login.html" class="btn-submit" id="btn-recover-finish" style="text-align:center; display:block;">
+          <i class="fas fa-save"></i> Guardar Nueva Contraseña
+        </a>
+      </div>
+
+    </div><!-- /tab-pane-recover -->
+
+  </div><!-- /form-wrapper -->
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy" style="border-top:none; padding-top:0;">
+    © 2026 PNK Inmobiliaria — Todos los derechos reservados.
+    <a href="index.html" style="color:#c9922a; margin-left:15px;">Volver al Inicio</a>
+  </div>
+</footer>
+
+</body>
+</html>

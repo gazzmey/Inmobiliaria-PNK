@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Casa Las Compañías, La Serena — 4 dormitorios, 3 baños, 180 m². Precio $235.000.000. PNK Inmobiliaria."/>
+  <title>Casa Las Compañías, La Serena — PNK Inmobiliaria</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<span id="top-page" style="position:absolute;top:0;left:0;"></span>
+<nav>
+  <a href="index.html" class="nav-logo" id="logo-detalle">
+    <div class="logo-icon">🏛️</div>
+    <div><span>PNK Inmobiliaria</span><small>Región de Coquimbo</small></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="btn-nav-outline" id="nav-inicio">Inicio</a>
+    <a href="registro-propietario.html" class="btn-nav-outline" id="nav-reg-prop">Registrar Propietario</a>
+    <a href="registro-gestor.html" class="btn-nav-outline" id="nav-reg-gestor">Registrar Gestor</a>
+    <a href="login.html" class="btn-nav-primary" id="nav-ingresar">Ingresar</a>
+  </div>
+</nav>
+<div style="background:var(--crema-dark); padding:12px 50px; border-bottom:1px solid #e0d8cd; font-size:0.82rem; color:#9a9080;">
+  <a href="index.html" style="color:#c9922a; text-decoration:none;">Inicio</a>
+  <span style="margin:0 8px;">›</span>
+  <a href="index.html" style="color:#c9922a; text-decoration:none;">Casas</a>
+  <span style="margin:0 8px;">›</span>
+  <span>Casa Las Compañías, La Serena</span>
+</div>
+<div class="form-modal" id="modalVisita">
+  <div class="form-modal-content" style="max-width:500px;">
+    <div class="form-modal-header">
+      <h2><i class="fas fa-calendar-check"></i> Solicitar Visita</h2>
+      <a href="#top-page" class="btn-close-modal" id="btn-close-visita" aria-label="Cerrar">×</a>
+    </div>
+    <form id="form-solicitar-visita" method="POST" style="padding:25px; display:flex; flex-direction:column; gap:16px;">
+      <div class="alert alert-info">
+        <i class="fas fa-home"></i>
+        <span>Solicitando visita para: <strong>Casa Las Compañías — Cód: C0004</strong></span>
+      </div>
+      <div class="form-group"><label for="visita-nombre">Tu Nombre Completo *</label><input type="text" id="visita-nombre" name="nombre_visitante" placeholder="Nombre Apellido" required/></div>
+      <div class="form-group"><label for="visita-email">Correo Electrónico *</label><input type="email" id="visita-email" name="email_visitante" placeholder="ejemplo@correo.cl" required/></div>
+      <div class="form-group"><label for="visita-tel">Teléfono *</label><input type="tel" id="visita-tel" name="telefono_visitante" placeholder="+56 9 1234 5678" required/></div>
+      <div class="form-group"><label for="visita-fecha">Fecha Preferida *</label><input type="date" id="visita-fecha" name="fecha_visita" required/></div>
+      <div class="form-group"><label for="visita-mensaje">Mensaje Adicional</label><textarea id="visita-mensaje" name="mensaje_visita" rows="3" placeholder="¿Alguna consulta o comentario?"></textarea></div>
+      <button type="submit" class="btn-submit" id="btn-enviar-visita"><i class="fas fa-paper-plane"></i> Enviar Solicitud de Visita</button>
+    </form>
+  </div>
+</div>
+<div class="detalle-container animate-in">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:28px; flex-wrap:wrap; gap:15px;">
+    <div>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+        <span class="badge badge-tipo-casa">Casa</span>
+        <span class="property-code"><i class="fas fa-tag"></i> Cód: C0004</span>
+        <span class="badge badge-activo">Activo</span>
+      </div>
+      <h1 style="font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--negro);">Casa Las Compañías, La Serena</h1>
+      <div class="prop-location" style="margin-top:8px; font-size:0.95rem;">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Las Compañías, La Serena — Provincia Elqui, Región de Coquimbo</span>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--dorado);">$235.000.000</div>
+      <div style="color:var(--gris); font-size:0.9rem; margin-top:3px;">UF 5.570 aprox.</div>
+      <div style="color:var(--gris); font-size:0.78rem; margin-top:3px;"><i class="fas fa-calendar-alt"></i> Publicado: 15/04/2026</div>
+    </div>
+  </div>
+  <div class="detalle-grid">
+    <div style="position:relative;">
+      <input type="radio" name="gallery" id="gal-1" class="gal-radio" checked/>
+      <input type="radio" name="gallery" id="gal-2" class="gal-radio"/>
+      <input type="radio" name="gallery" id="gal-3" class="gal-radio"/>
+      <input type="radio" name="gallery" id="gal-4" class="gal-radio"/>
+      <div class="gallery-wrap">
+        <div class="gallery-main">
+          <img class="gal-img" src="img/prop-casa-companias.webp" alt="Casa Las Compañías - foto 1"/>
+          <img class="gal-img" src="img/prop-casa-companias.webp" alt="Casa Las Compañías - foto 2"/>
+          <img class="gal-img" src="img/prop-casa-companias.webp" alt="Casa Las Compañías - foto 3"/>
+          <img class="gal-img" src="img/prop-casa-companias.webp" alt="Casa Las Compañías - foto 4"/>
+        </div>
+        <div class="gallery-thumbs">
+          <label for="gal-1" class="gallery-thumb" id="thumb-1"><img src="img/prop-casa-companias.webp" alt="Foto 1"/></label>
+          <label for="gal-2" class="gallery-thumb" id="thumb-2"><img src="img/prop-casa-companias.webp" alt="Foto 2"/></label>
+          <label for="gal-3" class="gallery-thumb" id="thumb-3"><img src="img/prop-casa-companias.webp" alt="Foto 3"/></label>
+          <label for="gal-4" class="gallery-thumb" id="thumb-4"><img src="img/prop-casa-companias.webp" alt="Foto 4"/></label>
+        </div>
+      </div>
+    </div>
+    <div class="detalle-info">
+      <div class="price-block">
+        <span class="price-main">$235.000.000</span>
+        <div class="price-uf"><i class="fas fa-equals"></i> UF 5.570 (valor referencial)</div>
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="#modalVisita" class="btn-submit" id="btn-solicitar-visita" style="padding:12px 20px; font-size:0.85rem; flex:1; text-align:center; text-decoration:none;"><i class="fas fa-calendar-check"></i> Solicitar Visita</a>
+          <a href="tel:+56912345678" id="btn-contactar" style="padding:12px 20px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.3); color:white; border-radius:6px; font-size:0.85rem; font-weight:600; flex:1; text-align:center; text-decoration:none; transition:all 0.3s;"><i class="fas fa-phone-alt"></i> Contactar</a>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:14px; color:var(--negro);">Características</h3>
+        <div class="features-grid">
+          <div class="feature-item"><i class="fas fa-bed"></i><div><strong>4</strong><br/><small>Dormitorios</small></div></div>
+          <div class="feature-item"><i class="fas fa-bath"></i><div><strong>3</strong><br/><small>Baños</small></div></div>
+          <div class="feature-item"><i class="fas fa-ruler-combined"></i><div><strong>180 m²</strong><br/><small>Área Construida</small></div></div>
+          <div class="feature-item"><i class="fas fa-map"></i><div><strong>250 m²</strong><br/><small>Área Total Terreno</small></div></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:10px; color:var(--negro);">Descripción</h3>
+        <p style="color:var(--gris); font-size:0.9rem; line-height:1.8;">Espléndida casa en sector exclusivo de Las Compañías. Amplios espacios, jardín privado, piscina y garage para dos vehículos. Perfecta para familia. A pocos minutos del centro de La Serena y con excelente conectividad.</p>
+      </div>
+    </div>
+  </div>
+  <div style="margin-bottom:40px;">
+    <h2 style="font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:20px; color:var(--negro);">Cuenta con:</h2>
+    <div class="amenities-grid">
+      <div class="amenity si"><i class="fas fa-warehouse"></i> Bodega</div>
+      <div class="amenity si"><i class="fas fa-car"></i> Estacionamiento</div>
+      <div class="amenity"><i class="fas fa-tshirt"></i> Logia</div>
+      <div class="amenity si"><i class="fas fa-utensils"></i> Cocina Amoblada</div>
+      <div class="amenity"><i class="fas fa-seedling"></i> Antejardín</div>
+      <div class="amenity si"><i class="fas fa-tree"></i> Patio Trasero</div>
+      <div class="amenity si"><i class="fas fa-swimming-pool"></i> Piscina</div>
+    </div>
+  </div>
+  <div style="margin-bottom:40px;">
+    <h2 style="font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:20px; color:var(--negro);">
+      <i class="fas fa-map-marked-alt" style="color:var(--dorado);"></i> Ubicación
+    </h2>
+    <div class="map-container" id="mapa-propiedad">
+      <div class="map-placeholder">
+        <i class="fas fa-map-marker-alt"></i>
+        <p style="font-size:1rem; font-weight:600; color:var(--negro);">Las Compañías, La Serena</p>
+        <p>Provincia Elqui — Región de Coquimbo</p>
+        <small style="display:block; margin-top:8px; color:var(--gris); font-size:0.8rem;">(Integración con Google Maps API en producción)</small>
+        <a href="https://maps.google.com/?q=Las+Companias+La+Serena+Chile" target="_blank" rel="noopener" id="link-google-maps"
+           style="display:inline-flex; align-items:center; gap:6px; margin-top:15px; background:var(--dorado); color:var(--negro); padding:9px 18px; border-radius:6px; font-size:0.82rem; font-weight:700; text-decoration:none;">
+          <i class="fab fa-google"></i> Ver en Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="share-bar" id="seccion-compartir">
+    <i class="fas fa-share-alt" style="color:var(--dorado);"></i>
+    <span>Compartir esta propiedad:</span>
+    <a href="https://wa.me/?text=Mira%20esta%20propiedad%20en%20PNK%20Inmobiliaria%3A%20Casa%20Las%20Compa%C3%B1%C3%ADas%20%24235.000.000" target="_blank" rel="noopener" class="share-btn share-whatsapp" id="share-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%2FFront-End%2Fdetalle-casa-companias.html" target="_blank" rel="noopener" class="share-btn share-facebook" id="share-facebook"><i class="fab fa-facebook"></i> Facebook</a>
+    <a href="https://twitter.com/intent/tweet?text=Casa+Las+Compa%C3%B1%C3%ADas+La+Serena+%24235.000.000+%40PNKInmobiliaria" target="_blank" rel="noopener" class="share-btn share-twitter" id="share-twitter"><i class="fab fa-x-twitter"></i> Twitter / X</a>
+  </div>
+  <div style="margin-top:40px;">
+    <a href="index.html" class="btn-secondary" id="btn-volver-inicio" style="display:inline-flex; align-items:center; gap:8px;">
+      <i class="fas fa-arrow-left"></i> Volver a propiedades
+    </a>
+  </div>
+</div>
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="footer-brand-title">🏛️ PNK Inmobiliaria</div>
+      <p>La plataforma inmobiliaria de la Región de Coquimbo.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Plataforma</h4>
+      <a href="index.html">Inicio</a>
+      <a href="registro-propietario.html">Registro Propietario</a>
+      <a href="registro-gestor.html">Registro Gestor</a>
+    </div>
+    <div class="footer-col">
+      <h4>Propiedades</h4>
+      <a href="index.html">Casas</a>
+      <a href="index.html">Departamentos</a>
+      <a href="index.html">Terrenos</a>
+    </div>
+    <div class="footer-col">
+      <h4>Región Coquimbo</h4>
+      <a href="#">Provincia Elqui</a>
+      <a href="#">Provincia Limarí</a>
+      <a href="#">Provincia Choapa</a>
+    </div>
+  </div>
+  <div class="footer-copy">© 2026 PNK Inmobiliaria — Todos los derechos reservados. Región de Coquimbo, Chile.</div>
+</footer>
+</body>
+</html>

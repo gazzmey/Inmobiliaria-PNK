@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Panel de administración PNK Inmobiliaria — Gestiona propiedades, usuarios y publicaciones."/>
+  <title>Dashboard — PNK Inmobiliaria</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="index.html" class="nav-logo" id="logo-dashboard">
+    <div class="logo-icon">🏛️</div>
+    <div>
+      <span>PNK Inmobiliaria</span>
+      <small>Panel de Administración</small>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="dashboard.html" class="btn-nav-outline" id="nav-dashboard" style="color:#e8b84b; border-color:#e8b84b;">Dashboard</a>
+    <a href="propiedades.html" class="btn-nav-outline" id="nav-propiedades">Propiedades</a>
+    <a href="usuarios.html" class="btn-nav-outline" id="nav-usuarios">Usuarios</a>
+    <a href="index.html" class="btn-nav-primary" id="nav-salir">
+      <i class="fas fa-sign-out-alt"></i> Salir
+    </a>
+  </div>
+</nav>
+
+<!-- DASHBOARD LAYOUT -->
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar-menu">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Principal</div>
+      <a href="dashboard.html" class="sidebar-link active" id="sb-dashboard">
+        <i class="fas fa-th-large"></i> Dashboard
+      </a>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Gestión</div>
+      <a href="propiedades.html" class="sidebar-link" id="sb-propiedades">
+        <i class="fas fa-building"></i> Propiedades
+      </a>
+      <a href="usuarios.html" class="sidebar-link" id="sb-usuarios">
+        <i class="fas fa-users"></i> Usuarios
+      </a>
+      <a href="usuarios.html" class="sidebar-link" id="sb-propietarios">
+        <i class="fas fa-home"></i> Propietarios
+      </a>
+      <a href="usuarios.html" class="sidebar-link" id="sb-gestores">
+        <i class="fas fa-briefcase"></i> Gestores Freelance
+      </a>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Publicaciones</div>
+      <a href="propiedades.html" class="sidebar-link" id="sb-pub-props">
+        <i class="fas fa-plus-circle"></i> Nueva Propiedad
+      </a>
+      <a href="propiedades.html" class="sidebar-link" id="sb-avisos">
+        <i class="fas fa-list"></i> Avisos Publicados
+      </a>
+      <a href="#" class="sidebar-link" id="sb-mensajes">
+        <i class="fas fa-envelope"></i> Solicitudes de Visita
+        <span style="background:#c9922a; color:#0e0d0b; border-radius:10px; padding:1px 7px; font-size:0.68rem; margin-left:auto; font-weight:700;">3</span>
+      </a>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Sistema</div>
+      <a href="#" class="sidebar-link" id="sb-reportes">
+        <i class="fas fa-chart-line"></i> Reportes
+      </a>
+      <a href="#" class="sidebar-link" id="sb-config">
+        <i class="fas fa-cog"></i> Configuración
+      </a>
+      <a href="index.html" class="sidebar-link" id="sb-salir" style="color:#b91c1c;">
+        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+
+    <div class="dashboard-header animate-in">
+      <h1>Panel de Control</h1>
+      <p>Bienvenido, <strong>Administrador</strong> — Hoy es lunes 21 de abril de 2026</p>
+    </div>
+
+    <!-- STATS -->
+    <div class="dashboard-stats">
+      <div class="stat-card animate-in">
+        <div class="stat-icon"><i class="fas fa-building"></i></div>
+        <div class="stat-content">
+          <h3>Propiedades</h3>
+          <p class="stat-number">245</p>
+        </div>
+      </div>
+      <div class="stat-card animate-in delay-1" style="border-left-color:#1d4ed8;">
+        <div class="stat-icon" style="background:rgba(29,78,216,0.1);"><i class="fas fa-home" style="color:#1d4ed8;"></i></div>
+        <div class="stat-content">
+          <h3>Propietarios</h3>
+          <p class="stat-number">89</p>
+        </div>
+      </div>
+      <div class="stat-card animate-in delay-2" style="border-left-color:#2e7d32;">
+        <div class="stat-icon" style="background:rgba(46,125,50,0.1);"><i class="fas fa-briefcase" style="color:#2e7d32;"></i></div>
+        <div class="stat-content">
+          <h3>Gestores Freelance</h3>
+          <p class="stat-number">34</p>
+        </div>
+      </div>
+      <div class="stat-card animate-in delay-3" style="border-left-color:#b91c1c;">
+        <div class="stat-icon" style="background:rgba(185,28,28,0.1);"><i class="fas fa-check-circle" style="color:#b91c1c;"></i></div>
+        <div class="stat-content">
+          <h3>Propiedades Vendidas</h3>
+          <p class="stat-number">12</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT GRID -->
+    <div class="dashboard-content">
+
+      <!-- ACCIONES ADMIN -->
+      <div class="dashboard-section animate-in">
+        <div class="section-header">
+          <h2>Opciones Administrativas</h2>
+          <span style="font-size:0.78rem; color:#9a9080;">Acceso rápido</span>
+        </div>
+        <div class="action-grid">
+          <a href="usuarios.html" class="action-card" id="ac-gestionar-usuarios">
+            <i class="fas fa-users"></i>
+            <h3>Gestionar Usuarios</h3>
+            <p>CRUD completo: Administradores, Propietarios y Gestores</p>
+          </a>
+          <a href="propiedades.html" class="action-card" id="ac-gestionar-props">
+            <i class="fas fa-building"></i>
+            <h3>Gestionar Propiedades</h3>
+            <p>Administrar publicaciones de inmuebles del sistema</p>
+          </a>
+          <a href="usuarios.html" class="action-card" id="ac-habilitar-gestor">
+            <i class="fas fa-user-check"></i>
+            <h3>Habilitar Gestores</h3>
+            <p>Activar / Dar de Baja Gestores Inmobiliarios Freelance</p>
+          </a>
+          <a href="usuarios.html" class="action-card" id="ac-prop-pendientes">
+            <i class="fas fa-clock"></i>
+            <h3>Usuarios Pendientes</h3>
+            <p>Revisar y activar cuentas en espera de verificación</p>
+          </a>
+          <a href="propiedades.html" class="action-card" id="ac-nueva-prop">
+            <i class="fas fa-plus-circle"></i>
+            <h3>Publicar Propiedad</h3>
+            <p>Crear nueva publicación de inmueble en la plataforma</p>
+          </a>
+          <a href="#" class="action-card" id="ac-solicitudes">
+            <i class="fas fa-envelope-open-text"></i>
+            <h3>Solicitudes de Visita</h3>
+            <p>Ver y gestionar las solicitudes de visita recibidas</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- ACTIVIDAD RECIENTE -->
+      <div class="dashboard-section animate-in delay-1">
+        <div class="section-header">
+          <h2>Actividad Reciente</h2>
+          <a href="#" style="font-size:0.78rem; color:#c9922a; text-decoration:none;">Ver todo</a>
+        </div>
+        <div class="activity-list">
+          <div class="activity-item">
+            <div class="activity-icon"><i class="fas fa-user-plus"></i></div>
+            <div class="activity-content">
+              <p><strong>Nuevo Propietario:</strong> Juan García Rodríguez</p>
+              <small>Hace 2 horas — Estado: Pendiente</small>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon"><i class="fas fa-home"></i></div>
+            <div class="activity-content">
+              <p><strong>Propiedad Publicada:</strong> Casa El Milagro, La Serena</p>
+              <small>Hace 4 horas — Cód: C0125457</small>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon"><i class="fas fa-briefcase"></i></div>
+            <div class="activity-content">
+              <p><strong>Gestor Activado:</strong> María López F. — PENKA-00342</p>
+              <small>Hace 1 día</small>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon"><i class="fas fa-check-double"></i></div>
+            <div class="activity-content">
+              <p><strong>Propiedad Vendida:</strong> Departamento Centro Coquimbo</p>
+              <small>Hace 2 días — Precio final: UF 850</small>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon"><i class="fas fa-calendar-check"></i></div>
+            <div class="activity-content">
+              <p><strong>Solicitud de Visita:</strong> Casa Barrio Inglés</p>
+              <small>Hace 3 días — Solicitante: Roberto Núñez</small>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon"><i class="fas fa-user-times"></i></div>
+            <div class="activity-content">
+              <p><strong>Cuenta Desactivada:</strong> Patricia González Díaz</p>
+              <small>Hace 4 días — Motivo: Antecedentes no verificados</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PENDIENTES ALERT -->
+    <div class="alert alert-warning animate-in" style="margin-top:28px;">
+      <i class="fas fa-exclamation-triangle"></i>
+      <span>Tienes <strong>5 usuarios pendientes</strong> de verificación y <strong>3 solicitudes de visita</strong> sin responder.
+        <a href="usuarios.html" style="color:#92400e; font-weight:700; margin-left:10px;">Revisar usuarios →</a>
+      </span>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy" style="border-top:none; padding-top:0;">
+    © 2026 PNK Inmobiliaria — Panel Administrativo. Todos los derechos reservados.
+  </div>
+</footer>
+
+</body>
+</html>

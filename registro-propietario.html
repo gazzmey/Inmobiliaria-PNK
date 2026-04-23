@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Regístrate como Propietario en PNK Inmobiliaria y publica tus propiedades en la Región de Coquimbo."/>
+  <title>Registro Propietario — PNK Inmobiliaria</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="index.html" class="nav-logo" id="logo-reg-prop">
+    <div class="logo-icon">🏛️</div>
+    <div>
+      <span>PNK Inmobiliaria</span>
+      <small>Región de Coquimbo</small>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="btn-nav-outline" id="nav-inicio">Inicio</a>
+    <a href="registro-propietario.html" class="btn-nav-outline" id="nav-reg-prop" style="color:#e8b84b; border-color:#e8b84b;">Propietario</a>
+    <a href="registro-gestor.html" class="btn-nav-outline" id="nav-reg-gestor">Gestor Freelance</a>
+    <a href="login.html" class="btn-nav-primary" id="nav-ingresar">Ingresar</a>
+  </div>
+</nav>
+
+<!-- FORM -->
+<section class="form-container">
+  <div class="form-wrapper wide animate-in">
+
+    <div class="form-header">
+      <i class="fas fa-home"></i>
+      <h1>Registrarme como PROPIETARIO</h1>
+      <p>Crea tu cuenta, publica tus propiedades y llega a miles de compradores</p>
+    </div>
+
+    <form class="form-main" id="form-registro-propietario" method="POST" novalidate>
+
+      <div class="alert alert-info">
+        <i class="fas fa-info-circle"></i>
+        <span>Tu cuenta quedará en estado <strong>Pendiente</strong> hasta que el Administrador verifique tus antecedentes. Recibirás un correo cuando sea activada.</span>
+      </div>
+
+      <!-- DATOS PERSONALES -->
+      <div style="grid-column: 1/-1;">
+        <p class="form-section-title"><i class="fas fa-user"></i> Datos Personales</p>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="prop-rut">RUT *</label>
+          <input type="text" id="prop-rut" name="rut" placeholder="12.345.678-9" required/>
+        </div>
+        <div class="form-group">
+          <label for="prop-nombres">Nombres *</label>
+          <input type="text" id="prop-nombres" name="nombres" placeholder="Nombres" required/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="prop-apellido-paterno">Apellido Paterno *</label>
+          <input type="text" id="prop-apellido-paterno" name="apellido_paterno" placeholder="Apellido Paterno" required/>
+        </div>
+        <div class="form-group">
+          <label for="prop-apellido-materno">Apellido Materno *</label>
+          <input type="text" id="prop-apellido-materno" name="apellido_materno" placeholder="Apellido Materno" required/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="prop-fecha-nac">Fecha de Nacimiento *</label>
+          <input type="date" id="prop-fecha-nac" name="fecha_nacimiento" required/>
+        </div>
+        <div class="form-group">
+          <label for="prop-sexo">Sexo *</label>
+          <select id="prop-sexo" name="sexo" required>
+            <option value="">Selecciona tu sexo</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+            <option value="O">Prefiero no indicar</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- CONTACTO -->
+      <div style="grid-column:1/-1; margin-top:10px;">
+        <p class="form-section-title"><i class="fas fa-address-book"></i> Datos de Contacto</p>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="prop-email">Correo Electrónico *</label>
+          <input type="email" id="prop-email" name="email" placeholder="ejemplo@correo.cl" required/>
+        </div>
+        <div class="form-group">
+          <label for="prop-telefono">Teléfono Móvil *</label>
+          <input type="tel" id="prop-telefono" name="telefono" placeholder="+56 9 1234 5678" required/>
+        </div>
+      </div>
+
+      <!-- BIENES RAÍCES -->
+      <div style="grid-column:1/-1; margin-top:10px;">
+        <p class="form-section-title"><i class="fas fa-file-alt"></i> Datos de la Propiedad</p>
+      </div>
+
+      <div class="form-group" style="grid-column:1/-1;">
+        <label for="prop-nro-bienes">N° de Propiedad según Registro de Bienes Raíces *</label>
+        <input type="text" id="prop-nro-bienes" name="nro_bienes_raices" placeholder="Ej: BR-2025-00123456" required/>
+        <small>Este número es requerido para verificar la titularidad del inmueble.</small>
+      </div>
+
+      <!-- CREDENCIALES -->
+      <div style="grid-column:1/-1; margin-top:10px;">
+        <p class="form-section-title"><i class="fas fa-shield-alt"></i> Credenciales de Acceso</p>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="prop-password">Contraseña *</label>
+          <input type="password" id="prop-password" name="password" placeholder="Mínimo 8 caracteres" required/>
+        </div>
+        <div class="form-group">
+          <label for="prop-confirm-pass">Confirmar Contraseña *</label>
+          <input type="password" id="prop-confirm-pass" name="confirm_password" placeholder="Repite tu contraseña" required/>
+        </div>
+      </div>
+
+      <!-- TÉRMINOS -->
+      <div class="form-checkbox" style="grid-column:1/-1;">
+        <input type="checkbox" id="prop-terms" name="terms" required/>
+        <label for="prop-terms">Acepto los <a href="#" style="color:#c9922a;">Términos y Condiciones</a> y la <a href="#" style="color:#c9922a;">Política de Privacidad</a></label>
+      </div>
+
+      <button type="submit" class="btn-submit" id="btn-registrar-propietario" style="grid-column:1/-1;">
+        <i class="fas fa-user-check"></i> Registrarme como Propietario
+      </button>
+
+    </form>
+
+    <div class="form-footer">
+      <p>¿Ya tienes una cuenta? <a href="login.html" class="link-login" id="link-prop-login">Inicia sesión aquí</a></p>
+      <p style="margin-top:8px;">¿Quieres ser Gestor Freelance? <a href="registro-gestor.html" class="link-login" id="link-prop-to-gestor">Regístrate aquí</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy" style="border-top:none; padding-top:0;">
+    © 2026 PNK Inmobiliaria — Todos los derechos reservados.
+    <a href="index.html" style="color:#c9922a; margin-left:15px;">Volver al Inicio</a>
+  </div>
+</footer>
+
+</body>
+</html>
