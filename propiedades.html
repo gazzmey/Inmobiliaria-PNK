@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -9,13 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/style.css"/>
+    <link rel="icon" type="image/png" href="img/casa.png"/>
 </head>
 <body>
 
-<!-- Ancla de cierre de modales (sin JS) -->
+<!-- ancla cierre -->
 <span id="top-page" style="position:absolute;top:0;left:0;"></span>
 
-<!-- NAVBAR -->
+<!-- navbar -->
 <nav>
   <a href="index.html" class="nav-logo" id="logo-propiedades">
     <div class="logo-icon">🏛️</div>
@@ -35,11 +36,7 @@
   </div>
 </nav>
 
-<!-- ============================================================
-     MODAL: NUEVA / EDITAR PROPIEDAD  (CSS :target — sin JS)
-     Abre:  <a href="#modalPropiedad">
-     Cierra: <a href="#top-page">
-     ============================================================ -->
+
 <div class="form-modal" id="modalPropiedad">
   <div class="form-modal-content">
 
@@ -54,7 +51,7 @@
     <form id="form-propiedad-modal" method="POST" enctype="multipart/form-data"
           style="padding:25px; display:flex; flex-direction:column; gap:18px;">
 
-      <!-- Tipo y Ubicación -->
+      <!-- tipo/ubicación -->
       <p class="form-section-title"><i class="fas fa-map-marker-alt"></i> Tipo y Ubicación</p>
 
       <div class="form-row">
@@ -96,7 +93,7 @@
         </div>
       </div>
 
-      <!-- Características -->
+      <!-- características -->
       <p class="form-section-title"><i class="fas fa-home"></i> Características</p>
 
       <div class="form-row">
@@ -121,7 +118,7 @@
         </div>
       </div>
 
-      <!-- Precio -->
+      <!-- precio -->
       <p class="form-section-title"><i class="fas fa-dollar-sign"></i> Precio</p>
 
       <div class="form-row">
@@ -135,14 +132,14 @@
         </div>
       </div>
 
-      <!-- Descripción -->
+      <!-- descripción -->
       <div class="form-group">
         <label for="mp-descripcion">Descripción de la Propiedad *</label>
         <textarea id="mp-descripcion" name="descripcion" rows="3"
                   placeholder="Describe la propiedad, sus características y aspectos destacados..." required></textarea>
       </div>
 
-      <!-- Fecha de publicación -->
+      <!-- fecha -->
       <div class="form-row">
         <div class="form-group">
           <label for="mp-fecha-pub">Fecha de Publicación</label>
@@ -170,7 +167,7 @@
         <label><input type="checkbox" id="mp-piscina"          name="piscina">         <i class="fas fa-swimming-pool"></i> Piscina</label>
       </div>
 
-      <!-- Propietario y Fotografías -->
+      <!-- propietario/fotos -->
       <div class="form-group">
         <label for="mp-propietario">Propietario Asociado *</label>
         <select id="mp-propietario" name="propietario_id" required>
@@ -181,11 +178,6 @@
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="mp-fotos">Fotografías (máximo 10 imágenes)</label>
-        <input type="file" id="mp-fotos" name="fotografias" multiple accept="image/*"/>
-        <small>Formatos: JPG, PNG, WEBP. Máx 10 fotos. La primera imagen será la portada.</small>
-      </div>
 
       <button type="submit" class="btn-submit" id="btn-guardar-propiedad">
         <i class="fas fa-save"></i> Guardar Propiedad
@@ -193,12 +185,10 @@
 
     </form>
   </div>
-</div><!-- /modalPropiedad -->
+</div>
 
 
-<!-- ============================================================
-     CONTENIDO PRINCIPAL
-     ============================================================ -->
+
 <section class="crud-container animate-in">
 
   <div class="crud-header">
@@ -206,20 +196,20 @@
       <h1>Gestión de Propiedades</h1>
       <p>CRUD completo de inmuebles: Casas, Departamentos y Terrenos — Región de Coquimbo</p>
     </div>
-    <!-- Abre modal sin JS -->
+    <!-- abre modal -->
     <a href="#modalPropiedad" class="btn-nuevo" id="btn-nueva-propiedad">
       <i class="fas fa-plus-circle"></i> Nueva Propiedad
     </a>
   </div>
 
-  <!-- FILTROS VISUALES (sin JS) -->
-  <div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
-    <span style="padding:8px 18px; border-radius:20px; border:1px solid #c9922a; background:#c9922a; color:#0e0d0b; font-size:0.8rem; font-weight:700;">Todas (245)</span>
-    <span style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#b45309; font-size:0.8rem;">🏠 Casas (120)</span>
-    <span style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#1d4ed8; font-size:0.8rem;">🏢 Departamentos (85)</span>
-    <span style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#2e7d32; font-size:0.8rem;">🌱 Terrenos (40)</span>
-    <span style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#9a9080; font-size:0.8rem;">✅ Activas (221)</span>
-    <span style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#9a9080; font-size:0.8rem;">🔒 Vendidas (12)</span>
+  <!-- filtros -->
+  <div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;" id="prop-filters">
+    <span id="pf-todas" style="padding:8px 18px; border-radius:20px; border:1px solid #c9922a; background:#c9922a; color:#0e0d0b; font-size:0.8rem; font-weight:700; cursor:pointer;">Todas (<span class="cnt">—</span>)</span>
+    <span id="pf-casas" style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#b45309; font-size:0.8rem; cursor:pointer;">🏠 Casas (<span class="cnt">—</span>)</span>
+    <span id="pf-deptos" style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#1d4ed8; font-size:0.8rem; cursor:pointer;">🏢 Departamentos (<span class="cnt">—</span>)</span>
+    <span id="pf-terrenos" style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#2e7d32; font-size:0.8rem; cursor:pointer;">🌱 Terrenos (<span class="cnt">—</span>)</span>
+    <span id="pf-activas" style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#9a9080; font-size:0.8rem; cursor:pointer;">✅ Activas (<span class="cnt">—</span>)</span>
+    <span id="pf-vendidas" style="padding:8px 18px; border-radius:20px; border:1px solid #e0d8cd; background:white; color:#9a9080; font-size:0.8rem; cursor:pointer;">🔒 Vendidas (<span class="cnt">—</span>)</span>
   </div>
 
   <div class="table-container">
@@ -238,6 +228,7 @@
     <table class="crud-table" id="tabla-propiedades">
       <thead>
         <tr>
+
           <th>Código</th>
           <th>Tipo</th>
           <th>Ubicación</th>
@@ -347,7 +338,7 @@
     </table>
   </div>
 
-  <!-- PAGINACIÓN -->
+  <!-- paginación -->
   <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; font-size:0.85rem; color:#9a9080;">
     <span>Mostrando 1–6 de 245 propiedades</span>
     <div style="display:flex; gap:6px;">
@@ -361,14 +352,19 @@
 
 </section>
 
-<!-- FOOTER -->
+<!-- footer -->
 <footer>
   <div class="footer-copy" style="border-top:none; padding-top:0;">
     © 2026 PNK Inmobiliaria — Panel Administrativo. Todos los derechos reservados.
   </div>
 </footer>
 
-<!-- SIN JAVASCRIPT -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/propiedades.js"></script>
 
 </body>
 </html>

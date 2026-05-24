@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/style.css"/>
+    <link rel="icon" type="image/png" href="img/casa.png"/>
 </head>
 <body>
 
@@ -19,7 +20,7 @@
 -->
 <span id="top-page" style="position:absolute;top:0;left:0;"></span>
 
-<!-- NAVBAR -->
+<!-- navbar -->
 <nav>
   <a href="index.html" class="nav-logo" id="logo-usuarios">
     <div class="logo-icon">🏛️</div>
@@ -39,11 +40,7 @@
   </div>
 </nav>
 
-<!-- ============================================================
-     MODAL: NUEVO / EDITAR USUARIO  (CSS :target — sin JS)
-     Se abre con  <a href="#modalUsuario">
-     Se cierra con <a href="#top-page">
-     ============================================================ -->
+
 <div class="form-modal" id="modalUsuario">
   <div class="form-modal-content">
 
@@ -51,7 +48,7 @@
       <h2 id="modal-usuario-title">
         <i class="fas fa-user-plus"></i> Nuevo Usuario
       </h2>
-      <!-- Cierre: quita el :target apuntando al ancla top-page -->
+      <!-- cierre modal -->
       <a href="#top-page" class="btn-close-modal" id="btn-close-modal-usuario"
          aria-label="Cerrar modal">×</a>
     </div>
@@ -127,7 +124,7 @@
         </div>
       </div>
 
-      <!-- Campos extra: siempre visibles (sin JS toggle) -->
+      <!-- campos extra -->
       <div class="form-group">
         <label for="modal-u-bienes">N° Propiedad Bienes Raíces <small style="text-transform:none; letter-spacing:0;">(solo Propietarios)</small></label>
         <input type="text" id="modal-u-bienes" name="nro_bienes" placeholder="BR-2025-00123456"/>
@@ -156,12 +153,10 @@
     </form>
 
   </div>
-</div><!-- /modalUsuario -->
+</div>
 
 
-<!-- ============================================================
-     CONTENIDO PRINCIPAL
-     ============================================================ -->
+
 <section class="crud-container animate-in">
 
   <div class="crud-header">
@@ -169,7 +164,7 @@
       <h1>Gestión de Usuarios</h1>
       <p>Administra Propietarios, Gestores Freelance y Administradores del sistema</p>
     </div>
-    <!-- Abre modal sin JS: href="#modalUsuario" -->
+    <!-- abre modal -->
     <a href="#modalUsuario" class="btn-nuevo" id="btn-nuevo-usuario">
       <i class="fas fa-user-plus"></i> Nuevo Usuario
     </a>
@@ -186,7 +181,7 @@
 
   <div class="table-container">
     <div class="table-toolbar">
-      <!-- Búsqueda visual (sin filtrado JS) -->
+      <!-- búsqueda -->
       <div class="table-search">
         <i class="fas fa-search"></i>
         <input type="text" id="search-usuarios" placeholder="Buscar por nombre, RUT o correo..."/>
@@ -222,7 +217,7 @@
           <td><span class="badge badge-activo">Activo</span></td>
           <td>01/01/2025</td>
           <td class="action-buttons">
-            <!-- Cada editar abre el mismo modal con :target -->
+            <!-- editar modal -->
             <a href="#modalUsuario" class="btn-editar" title="Editar" id="btn-edit-u1"><i class="fas fa-edit"></i></a>
             <button class="btn-eliminar" title="Desactivar" id="btn-del-u1"><i class="fas fa-ban"></i></button>
           </td>
@@ -305,7 +300,7 @@
     </table>
   </div>
 
-  <!-- PAGINACIÓN -->
+  <!-- paginación -->
   <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; font-size:0.85rem; color:#9a9080;">
     <span>Mostrando 1–6 de 178 usuarios</span>
     <div style="display:flex; gap:6px;">
@@ -317,16 +312,21 @@
     </div>
   </div>
 
-</section><!-- /crud-container -->
+</section>
 
-<!-- FOOTER -->
+<!-- footer -->
 <footer>
   <div class="footer-copy" style="border-top:none; padding-top:0;">
     © 2026 PNK Inmobiliaria — Panel Administrativo. Todos los derechos reservados.
   </div>
 </footer>
 
-<!-- SIN JAVASCRIPT -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/usuarios.js"></script>
 
 </body>
 </html>

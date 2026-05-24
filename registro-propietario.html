@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -9,10 +9,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/style.css"/>
+    <link rel="icon" type="image/png" href="img/casa.png"/>
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- navbar -->
 <nav>
   <a href="index.html" class="nav-logo" id="logo-reg-prop">
     <div class="logo-icon">🏛️</div>
@@ -29,7 +30,7 @@
   </div>
 </nav>
 
-<!-- FORM -->
+<!-- form -->
 <section class="form-container">
   <div class="form-wrapper wide animate-in">
 
@@ -46,7 +47,7 @@
         <span>Tu cuenta quedará en estado <strong>Pendiente</strong> hasta que el Administrador verifique tus antecedentes. Recibirás un correo cuando sea activada.</span>
       </div>
 
-      <!-- DATOS PERSONALES -->
+      <!-- datos -->
       <div style="grid-column: 1/-1;">
         <p class="form-section-title"><i class="fas fa-user"></i> Datos Personales</p>
       </div>
@@ -89,7 +90,7 @@
         </div>
       </div>
 
-      <!-- CONTACTO -->
+      <!-- contacto -->
       <div style="grid-column:1/-1; margin-top:10px;">
         <p class="form-section-title"><i class="fas fa-address-book"></i> Datos de Contacto</p>
       </div>
@@ -105,7 +106,7 @@
         </div>
       </div>
 
-      <!-- BIENES RAÍCES -->
+      <!-- bienes raíces -->
       <div style="grid-column:1/-1; margin-top:10px;">
         <p class="form-section-title"><i class="fas fa-file-alt"></i> Datos de la Propiedad</p>
       </div>
@@ -116,7 +117,7 @@
         <small>Este número es requerido para verificar la titularidad del inmueble.</small>
       </div>
 
-      <!-- CREDENCIALES -->
+      <!-- credenciales -->
       <div style="grid-column:1/-1; margin-top:10px;">
         <p class="form-section-title"><i class="fas fa-shield-alt"></i> Credenciales de Acceso</p>
       </div>
@@ -132,7 +133,7 @@
         </div>
       </div>
 
-      <!-- TÉRMINOS -->
+      <!-- términos -->
       <div class="form-checkbox" style="grid-column:1/-1;">
         <input type="checkbox" id="prop-terms" name="terms" required/>
         <label for="prop-terms">Acepto los <a href="#" style="color:#c9922a;">Términos y Condiciones</a> y la <a href="#" style="color:#c9922a;">Política de Privacidad</a></label>
@@ -151,13 +152,17 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- footer -->
 <footer>
   <div class="footer-copy" style="border-top:none; padding-top:0;">
     © 2026 PNK Inmobiliaria — Todos los derechos reservados.
     <a href="index.html" style="color:#c9922a; margin-left:15px;">Volver al Inicio</a>
   </div>
 </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
 
 </body>
 </html>

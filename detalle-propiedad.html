@@ -1,21 +1,22 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Casa Sector El Milagro, La Serena — 3 dormitorios, 2 baños, 120 m². Precio $154.000.000. PNK Inmobiliaria."/>
-  <title>Casa El Milagro, La Serena — PNK Inmobiliaria</title>
+  <meta name="description" id="meta-desc" content="Detalle de propiedad — PNK Inmobiliaria, Región de Coquimbo."/>
+  <title id="page-title">Cargando... — PNK Inmobiliaria</title>
   <link rel="stylesheet" href="css/bootstrap.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/style.css"/>
+  <link rel="icon" type="image/png" href="img/casa.png"/>
 </head>
 <body>
 
-<!-- Ancla de cierre de modales (sin JS) -->
+<!-- ancla cierre -->
 <span id="top-page" style="position:absolute;top:0;left:0;"></span>
 
-<!-- NAVBAR -->
+<!-- navbar -->
 <nav>
   <a href="index.html" class="nav-logo" id="logo-detalle">
     <div class="logo-icon">🏛️</div>
@@ -32,20 +33,17 @@
   </div>
 </nav>
 
-<!-- BREADCRUMB -->
-<div style="background:var(--crema-dark); padding:12px 50px; border-bottom:1px solid #e0d8cd; font-size:0.82rem; color:#9a9080;">
+<!-- breadcrumb -->
+<div id="breadcrumb" style="background:var(--crema-dark); padding:12px 50px; border-bottom:1px solid #e0d8cd; font-size:0.82rem; color:#9a9080;">
   <a href="index.html" style="color:#c9922a; text-decoration:none;">Inicio</a>
   <span style="margin:0 8px;">›</span>
-  <a href="index.html" style="color:#c9922a; text-decoration:none;">Casas</a>
+  <span id="bc-tipo">Propiedades</span>
   <span style="margin:0 8px;">›</span>
-  <span>Casa Sector El Milagro, La Serena</span>
+  <span id="bc-nombre">Cargando...</span>
 </div>
 
-<!-- ============================================================
-     MODAL: SOLICITAR VISITA  (CSS :target — sin JS)
-     Abre:   <a href="#modalVisita">
-     Cierra: <a href="#top-page">
-     ============================================================ -->
+
+<!-- Modal Solicitar Visita -->
 <div class="form-modal" id="modalVisita">
   <div class="form-modal-content" style="max-width:500px;">
     <div class="form-modal-header">
@@ -56,7 +54,7 @@
           style="padding:25px; display:flex; flex-direction:column; gap:16px;">
       <div class="alert alert-info">
         <i class="fas fa-home"></i>
-        <span>Solicitando visita para: <strong>Casa El Milagro, La Serena — Cód: C0125457</strong></span>
+        <span id="visita-info-prop">Solicitando visita para esta propiedad</span>
       </div>
       <div class="form-group">
         <label for="visita-nombre">Tu Nombre Completo *</label>
@@ -84,204 +82,22 @@
       </button>
     </form>
   </div>
-</div><!-- /modalVisita -->
+</div>
 
 
-<!-- DETALLE CONTAINER -->
-<div class="detalle-container animate-in">
+<!-- detalle (se llena dinámicamente) -->
+<div class="detalle-container animate-in" id="detalle-content">
 
-  <!-- ENCABEZADO -->
-  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:28px; flex-wrap:wrap; gap:15px;">
-    <div>
-      <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
-        <span class="badge badge-tipo-casa">Casa</span>
-        <span class="property-code"><i class="fas fa-tag"></i> Cód: C0125457</span>
-        <span class="badge badge-activo">Activo</span>
-      </div>
-      <h1 style="font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--negro);">
-        Casa Sector El Milagro, La Serena
-      </h1>
-      <div class="prop-location" style="margin-top:8px; font-size:0.95rem;">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>Sector El Milagro, La Serena — Provincia Elqui, Región de Coquimbo</span>
-      </div>
-    </div>
-    <div style="text-align:right;">
-      <div style="font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--dorado);">$154.000.000</div>
-      <div style="color:var(--gris); font-size:0.9rem; margin-top:3px;">UF 3.650 aprox.</div>
-      <div style="color:var(--gris); font-size:0.78rem; margin-top:3px;">
-        <i class="fas fa-calendar-alt"></i> Publicado: 10/04/2026
-      </div>
-    </div>
+  <!-- Loading skeleton -->
+  <div id="detalle-loading" style="text-align:center; padding:80px 20px;">
+    <div style="width:60px;height:60px;border:4px solid #e0d8cd;border-top-color:#c9922a;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 20px;"></div>
+    <p style="color:#9a9080;font-size:1rem;">Cargando propiedad...</p>
   </div>
 
-  <!-- GALERÍA + INFO -->
-  <div class="detalle-grid">
-
-    <!--
-      GALERÍA con truco RADIO (SIN JavaScript):
-      Los inputs type="radio" deben ser hermanos anteriores
-      de .gallery-wrap para que el selector ~ funcione.
-    -->
-    <div style="position:relative;">
-      <!-- Radio inputs para galería -->
-      <input type="radio" name="gallery" id="gal-1" class="gal-radio" checked/>
-      <input type="radio" name="gallery" id="gal-2" class="gal-radio"/>
-      <input type="radio" name="gallery" id="gal-3" class="gal-radio"/>
-      <input type="radio" name="gallery" id="gal-4" class="gal-radio"/>
-
-      <div class="gallery-wrap">
-        <!-- Imagen principal: mostrará la seleccionada -->
-        <div class="gallery-main">
-          <img class="gal-img" src="img/prop-casa-milagro.webp"
-               alt="Casa El Milagro - foto 1"/>
-          <img class="gal-img" src="img/prop-casa-milagro.webp"
-               alt="Casa El Milagro - foto 2"/>
-          <img class="gal-img" src="img/prop-casa-milagro.webp"
-               alt="Casa El Milagro - foto 3"/>
-          <img class="gal-img" src="img/prop-casa-milagro.webp"
-               alt="Casa El Milagro - foto 4"/>
-        </div>
-
-        <!-- Miniaturas: label activa el radio correspondiente -->
-        <div class="gallery-thumbs">
-          <label for="gal-1" class="gallery-thumb" id="thumb-1">
-            <img src="img/prop-casa-milagro.webp" alt="Foto 1"/>
-          </label>
-          <label for="gal-2" class="gallery-thumb" id="thumb-2">
-            <img src="img/prop-casa-milagro.webp" alt="Foto 2"/>
-          </label>
-          <label for="gal-3" class="gallery-thumb" id="thumb-3">
-            <img src="img/prop-casa-milagro.webp" alt="Foto 3"/>
-          </label>
-          <label for="gal-4" class="gallery-thumb" id="thumb-4">
-            <img src="img/prop-casa-milagro.webp" alt="Foto 4"/>
-          </label>
-        </div>
-      </div>
-    </div><!-- /gallery column -->
+</div><!-- /detalle -->
 
 
-    <!-- INFO PANEL -->
-    <div class="detalle-info">
-
-      <!-- PRECIO -->
-      <div class="price-block">
-        <span class="price-main">$154.000.000</span>
-        <div class="price-uf"><i class="fas fa-equals"></i> UF 3.650 (valor referencial)</div>
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-          <!-- Abre modal sin JS -->
-          <a href="#modalVisita" class="btn-submit" id="btn-solicitar-visita"
-             style="padding:12px 20px; font-size:0.85rem; flex:1; text-align:center; text-decoration:none;">
-            <i class="fas fa-calendar-check"></i> Solicitar Visita
-          </a>
-          <a href="tel:+56912345678" id="btn-contactar"
-             style="padding:12px 20px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.3);
-                    color:white; border-radius:6px; font-size:0.85rem; font-weight:600; flex:1;
-                    text-align:center; text-decoration:none; transition:all 0.3s;">
-            <i class="fas fa-phone-alt"></i> Contactar
-          </a>
-        </div>
-      </div>
-
-      <!-- CARACTERÍSTICAS -->
-      <div>
-        <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:14px; color:var(--negro);">Características</h3>
-        <div class="features-grid">
-          <div class="feature-item"><i class="fas fa-bed"></i><div><strong>3</strong><br/><small>Dormitorios</small></div></div>
-          <div class="feature-item"><i class="fas fa-bath"></i><div><strong>2</strong><br/><small>Baños</small></div></div>
-          <div class="feature-item"><i class="fas fa-ruler-combined"></i><div><strong>120 m²</strong><br/><small>Área Construida</small></div></div>
-          <div class="feature-item"><i class="fas fa-map"></i><div><strong>150 m²</strong><br/><small>Área Total Terreno</small></div></div>
-        </div>
-      </div>
-
-      <!-- DESCRIPCIÓN -->
-      <div>
-        <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:10px; color:var(--negro);">Descripción</h3>
-        <p style="color:var(--gris); font-size:0.9rem; line-height:1.8;">
-          Hermosa casa ubicada en el exclusivo sector El Milagro de La Serena. Amplios espacios,
-          terminaciones de primera calidad y excelente orientación con abundante luz natural durante
-          todo el día. Cercana a colegios, supermercados y a solo 10 minutos del centro de La Serena.
-        </p>
-      </div>
-
-    </div><!-- /detalle-info -->
-  </div><!-- /detalle-grid -->
-
-
-  <!-- AMENIDADES -->
-  <div style="margin-bottom:40px;">
-    <h2 style="font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:20px; color:var(--negro);">
-      Cuenta con:
-    </h2>
-    <div class="amenities-grid">
-      <div class="amenity si"><i class="fas fa-warehouse"></i> Bodega</div>
-      <div class="amenity si"><i class="fas fa-car"></i> Estacionamiento</div>
-      <div class="amenity"><i class="fas fa-tshirt"></i> Logia</div>
-      <div class="amenity si"><i class="fas fa-utensils"></i> Cocina Amoblada</div>
-      <div class="amenity si"><i class="fas fa-seedling"></i> Antejardín</div>
-      <div class="amenity si"><i class="fas fa-tree"></i> Patio Trasero</div>
-      <div class="amenity"><i class="fas fa-swimming-pool"></i> Piscina</div>
-    </div>
-  </div>
-
-  <!-- MAPA -->
-  <div style="margin-bottom:40px;">
-    <h2 style="font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:20px; color:var(--negro);">
-      <i class="fas fa-map-marked-alt" style="color:var(--dorado);"></i> Ubicación
-    </h2>
-    <div class="map-container" id="mapa-propiedad">
-      <div class="map-placeholder">
-        <i class="fas fa-map-marker-alt"></i>
-        <p style="font-size:1rem; font-weight:600; color:var(--negro);">Sector El Milagro, La Serena</p>
-        <p>Provincia Elqui — Región de Coquimbo</p>
-        <small style="display:block; margin-top:8px; color:var(--gris); font-size:0.8rem;">
-          (Integración con Google Maps API en producción)
-        </small>
-        <a href="https://maps.google.com/?q=El+Milagro+La+Serena+Chile" target="_blank" rel="noopener"
-           id="link-google-maps"
-           style="display:inline-flex; align-items:center; gap:6px; margin-top:15px;
-                  background:var(--dorado); color:var(--negro); padding:9px 18px;
-                  border-radius:6px; font-size:0.82rem; font-weight:700; text-decoration:none;">
-          <i class="fab fa-google"></i> Ver en Google Maps
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- COMPARTIR EN REDES SOCIALES (solo hrefs — sin JS) -->
-  <div class="share-bar" id="seccion-compartir">
-    <i class="fas fa-share-alt" style="color:var(--dorado);"></i>
-    <span>Compartir esta propiedad:</span>
-
-    <a href="https://wa.me/?text=Mira%20esta%20propiedad%20en%20PNK%20Inmobiliaria%3A%20Casa%20El%20Milagro%20%24154.000.000"
-       target="_blank" rel="noopener" class="share-btn share-whatsapp" id="share-whatsapp">
-      <i class="fab fa-whatsapp"></i> WhatsApp
-    </a>
-
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%2FFront-End%2Fdetalle-propiedad.html"
-       target="_blank" rel="noopener" class="share-btn share-facebook" id="share-facebook">
-      <i class="fab fa-facebook"></i> Facebook
-    </a>
-
-    <a href="https://twitter.com/intent/tweet?text=Casa+El+Milagro+La+Serena+%24154.000.000+%40PNKInmobiliaria"
-       target="_blank" rel="noopener" class="share-btn share-twitter" id="share-twitter">
-      <i class="fab fa-x-twitter"></i> Twitter / X
-    </a>
-  </div><!-- /share-bar -->
-
-  <!-- VOLVER -->
-  <div style="margin-top:40px;">
-    <a href="index.html" class="btn-secondary" id="btn-volver-inicio"
-       style="display:inline-flex; align-items:center; gap:8px;">
-      <i class="fas fa-arrow-left"></i> Volver a propiedades
-    </a>
-  </div>
-
-</div><!-- /detalle-container -->
-
-
-<!-- FOOTER -->
+<!-- footer -->
 <footer>
   <div class="footer-content">
     <div class="footer-brand">
@@ -310,7 +126,204 @@
   <div class="footer-copy">© 2026 PNK Inmobiliaria — Todos los derechos reservados. Región de Coquimbo, Chile.</div>
 </footer>
 
-<!-- SIN JAVASCRIPT -->
+<style>
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/script.js"></script>
+<script src="js/auth.js"></script>
+<script>
+/**
+ * Detalle de Propiedad — Carga dinámica desde API
+ */
+document.addEventListener('DOMContentLoaded', async () => {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  const codigo = params.get('codigo');
+
+  if (!id && !codigo) {
+    showError('No se especificó una propiedad.');
+    return;
+  }
+
+  const endpoint = id ? 'propiedades/obtener.php?id=' + id : 'propiedades/obtener.php?codigo=' + codigo;
+  const result = await apiCall(endpoint);
+
+  if (!result.ok) {
+    showError(result.message || 'Propiedad no encontrada.');
+    return;
+  }
+
+  renderDetalle(result.data);
+});
+
+function showError(msg) {
+  document.getElementById('detalle-content').innerHTML =
+    '<div style="text-align:center;padding:80px 20px;">' +
+      '<i class="fas fa-exclamation-triangle" style="font-size:3rem;color:#c9922a;display:block;margin-bottom:20px;"></i>' +
+      '<h2 style="font-family:\'Playfair Display\',serif;margin-bottom:10px;">' + msg + '</h2>' +
+      '<a href="index.html" class="btn-ver" style="display:inline-block;margin-top:20px;"><i class="fas fa-arrow-left"></i> Volver al inicio</a>' +
+    '</div>';
+}
+
+function renderDetalle(p) {
+  const tipoLabel = { casa: 'Casa', departamento: 'Departamento', terreno: 'Terreno' };
+  const provLabel = { elqui: 'Elqui', limari: 'Limarí', choapa: 'Choapa' };
+  const tipo = tipoLabel[p.tipo] || p.tipo;
+  const prov = provLabel[p.provincia] || p.provincia;
+  const nombre = tipo + ' ' + p.sector + ', ' + p.comuna;
+  const tipoBadge = { casa: 'badge-tipo-casa', departamento: 'badge-tipo-depto', terreno: 'badge-tipo-terreno' };
+  const estadoBadge = { activo: 'badge-activo', inactivo: 'badge-inactivo', vendida: 'badge-vendida' };
+
+  // Actualizar title y meta
+  document.getElementById('page-title').textContent = nombre + ' — PNK Inmobiliaria';
+  document.getElementById('meta-desc').content = nombre + ' — ' + (p.dormitorios || 0) + ' dormitorios, ' + (p.banos || 0) + ' baños, ' + p.area_terreno + ' m². Precio ' + formatCLP(p.precio_pesos) + '. PNK Inmobiliaria.';
+
+  // Breadcrumb
+  document.getElementById('bc-tipo').textContent = tipo + 's';
+  document.getElementById('bc-nombre').textContent = nombre;
+
+  // Modal visita info
+  document.getElementById('visita-info-prop').innerHTML = 'Solicitando visita para: <strong>' + nombre + ' — Cód: ' + p.codigo + '</strong>';
+
+  // Fotos
+  const fotos = (p.fotos && p.fotos.length) ? p.fotos : [{ ruta: 'img/prop-casa-milagro.webp', es_portada: 1 }];
+  let galeriaRadios = '';
+  let galeriaImgs = '';
+  let galeriaThumbs = '';
+  fotos.forEach((f, i) => {
+    galeriaRadios += '<input type="radio" name="gallery" id="gal-' + (i+1) + '" class="gal-radio"' + (i === 0 ? ' checked' : '') + '/>';
+    galeriaImgs += '<img class="gal-img" src="' + f.ruta + '" alt="' + nombre + ' - foto ' + (i+1) + '"/>';
+    galeriaThumbs += '<label for="gal-' + (i+1) + '" class="gallery-thumb"><img src="' + f.ruta + '" alt="Foto ' + (i+1) + '"/></label>';
+  });
+
+  // Features
+  let featuresHtml = '';
+  if (p.tipo !== 'terreno') {
+    featuresHtml += '<div class="feature-item"><i class="fas fa-bed"></i><div><strong>' + (p.dormitorios || 0) + '</strong><br/><small>Dormitorios</small></div></div>';
+    featuresHtml += '<div class="feature-item"><i class="fas fa-bath"></i><div><strong>' + (p.banos || 0) + '</strong><br/><small>Baños</small></div></div>';
+  }
+  if (p.area_construida) {
+    featuresHtml += '<div class="feature-item"><i class="fas fa-ruler-combined"></i><div><strong>' + Number(p.area_construida).toLocaleString('es-CL') + ' m²</strong><br/><small>Área Construida</small></div></div>';
+  }
+  featuresHtml += '<div class="feature-item"><i class="fas fa-map"></i><div><strong>' + Number(p.area_terreno).toLocaleString('es-CL') + ' m²</strong><br/><small>Área Total Terreno</small></div></div>';
+
+  // Amenidades
+  const amenidades = [
+    { key: 'bodega', icon: 'fa-warehouse', label: 'Bodega' },
+    { key: 'estacionamiento', icon: 'fa-car', label: 'Estacionamiento' },
+    { key: 'logia', icon: 'fa-tshirt', label: 'Logia' },
+    { key: 'cocina_amoblada', icon: 'fa-utensils', label: 'Cocina Amoblada' },
+    { key: 'antejardin', icon: 'fa-seedling', label: 'Antejardín' },
+    { key: 'patio_trasero', icon: 'fa-tree', label: 'Patio Trasero' },
+    { key: 'piscina', icon: 'fa-swimming-pool', label: 'Piscina' },
+  ];
+  const amenHtml = amenidades.map(a =>
+    '<div class="amenity ' + (p[a.key] == 1 ? 'si' : '') + '"><i class="fas ' + a.icon + '"></i> ' + a.label + '</div>'
+  ).join('');
+
+  // WhatsApp share
+  const shareText = encodeURIComponent('Mira esta propiedad en PNK Inmobiliaria: ' + nombre + ' ' + formatCLP(p.precio_pesos));
+  const shareUrl = encodeURIComponent(window.location.href);
+
+  // Contacto propietario
+  const telHref = p.propietario_telefono ? 'tel:' + p.propietario_telefono.replace(/\s/g, '') : '#';
+
+  // Render completo
+  document.getElementById('detalle-content').innerHTML =
+    // Encabezado
+    '<div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:28px; flex-wrap:wrap; gap:15px;">' +
+      '<div>' +
+        '<div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">' +
+          '<span class="badge ' + (tipoBadge[p.tipo]||'') + '">' + tipo + '</span>' +
+          '<span class="property-code"><i class="fas fa-tag"></i> Cód: ' + p.codigo + '</span>' +
+          '<span class="badge ' + (estadoBadge[p.estado]||'') + '">' + p.estado.charAt(0).toUpperCase() + p.estado.slice(1) + '</span>' +
+        '</div>' +
+        '<h1 style="font-family:\'Playfair Display\',serif; font-size:2.2rem; color:var(--negro);">' + nombre + '</h1>' +
+        '<div class="prop-location" style="margin-top:8px; font-size:0.95rem;">' +
+          '<i class="fas fa-map-marker-alt"></i>' +
+          '<span>Sector ' + p.sector + ', ' + p.comuna + ' — Provincia ' + prov + ', Región de Coquimbo</span>' +
+        '</div>' +
+      '</div>' +
+      '<div style="text-align:right;">' +
+        '<div style="font-family:\'Playfair Display\',serif; font-size:2.2rem; color:var(--dorado);">' + formatCLP(p.precio_pesos) + '</div>' +
+        '<div style="color:var(--gris); font-size:0.9rem; margin-top:3px;">UF ' + Number(p.precio_uf).toLocaleString('es-CL') + ' aprox.</div>' +
+        '<div style="color:var(--gris); font-size:0.78rem; margin-top:3px;">' +
+          '<i class="fas fa-calendar-alt"></i> Publicado: ' + formatDate(p.fecha_publicacion) +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+
+    // Galería + Info
+    '<div class="detalle-grid">' +
+      '<div style="position:relative;">' +
+        galeriaRadios +
+        '<div class="gallery-wrap">' +
+          '<div class="gallery-main">' + galeriaImgs + '</div>' +
+          '<div class="gallery-thumbs">' + galeriaThumbs + '</div>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="detalle-info">' +
+        '<div class="price-block">' +
+          '<span class="price-main">' + formatCLP(p.precio_pesos) + '</span>' +
+          '<div class="price-uf"><i class="fas fa-equals"></i> UF ' + Number(p.precio_uf).toLocaleString('es-CL') + ' (valor referencial)</div>' +
+          '<div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">' +
+            '<a href="#modalVisita" class="btn-submit" style="padding:12px 20px; font-size:0.85rem; flex:1; text-align:center; text-decoration:none;">' +
+              '<i class="fas fa-calendar-check"></i> Solicitar Visita</a>' +
+            '<a href="' + telHref + '" style="padding:12px 20px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.3); color:white; border-radius:6px; font-size:0.85rem; font-weight:600; flex:1; text-align:center; text-decoration:none; transition:all 0.3s;">' +
+              '<i class="fas fa-phone-alt"></i> Contactar</a>' +
+          '</div>' +
+        '</div>' +
+        '<div>' +
+          '<h3 style="font-family:\'Playfair Display\',serif; font-size:1.1rem; margin-bottom:14px; color:var(--negro);">Características</h3>' +
+          '<div class="features-grid">' + featuresHtml + '</div>' +
+        '</div>' +
+        '<div>' +
+          '<h3 style="font-family:\'Playfair Display\',serif; font-size:1.1rem; margin-bottom:10px; color:var(--negro);">Descripción</h3>' +
+          '<p style="color:var(--gris); font-size:0.9rem; line-height:1.8;">' + (p.descripcion || 'Sin descripción disponible.') + '</p>' +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+
+    // Amenidades
+    '<div style="margin-bottom:40px;">' +
+      '<h2 style="font-family:\'Playfair Display\',serif; font-size:1.5rem; margin-bottom:20px; color:var(--negro);">Cuenta con:</h2>' +
+      '<div class="amenities-grid">' + amenHtml + '</div>' +
+    '</div>' +
+
+    // Mapa
+    '<div style="margin-bottom:40px;">' +
+      '<h2 style="font-family:\'Playfair Display\',serif; font-size:1.5rem; margin-bottom:20px; color:var(--negro);">' +
+        '<i class="fas fa-map-marked-alt" style="color:var(--dorado);"></i> Ubicación</h2>' +
+      '<div class="map-container">' +
+        '<div class="map-placeholder">' +
+          '<i class="fas fa-map-marker-alt"></i>' +
+          '<p style="font-size:1rem; font-weight:600; color:var(--negro);">Sector ' + p.sector + ', ' + p.comuna + '</p>' +
+          '<p>Provincia ' + prov + ' — Región de Coquimbo</p>' +
+          '<a href="https://maps.google.com/?q=' + encodeURIComponent(p.sector + ' ' + p.comuna + ' Chile') + '" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:6px; margin-top:15px; background:var(--dorado); color:var(--negro); padding:9px 18px; border-radius:6px; font-size:0.82rem; font-weight:700; text-decoration:none;">' +
+            '<i class="fab fa-google"></i> Ver en Google Maps</a>' +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+
+    // Compartir
+    '<div class="share-bar">' +
+      '<i class="fas fa-share-alt" style="color:var(--dorado);"></i>' +
+      '<span>Compartir esta propiedad:</span>' +
+      '<a href="https://wa.me/?text=' + shareText + '" target="_blank" rel="noopener" class="share-btn share-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>' +
+      '<a href="https://www.facebook.com/sharer/sharer.php?u=' + shareUrl + '" target="_blank" rel="noopener" class="share-btn share-facebook"><i class="fab fa-facebook"></i> Facebook</a>' +
+      '<a href="https://twitter.com/intent/tweet?text=' + shareText + '" target="_blank" rel="noopener" class="share-btn share-twitter"><i class="fab fa-x-twitter"></i> Twitter / X</a>' +
+    '</div>' +
+
+    // Volver
+    '<div style="margin-top:40px;">' +
+      '<a href="index.html" class="btn-secondary" style="display:inline-flex; align-items:center; gap:8px;">' +
+        '<i class="fas fa-arrow-left"></i> Volver a propiedades</a>' +
+    '</div>';
+}
+</script>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -9,13 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/style.css"/>
+    <link rel="icon" type="image/png" href="img/casa.png"/>
 </head>
 <body>
 
-<!-- ANCLA CIERRE MODAL (sin JS) -->
+<!-- ancla cierre -->
 <span id="top-page" style="position:absolute;top:0;"></span>
 
-<!-- NAVBAR -->
+<!-- navbar -->
 <nav>
   <a href="index.html" class="nav-logo" id="logo-login">
     <div class="logo-icon">🏛️</div>
@@ -32,9 +33,7 @@
   </div>
 </nav>
 
-<!-- ================================================================
-     PÁGINA LOGIN — PESTAÑAS CON RADIO INPUTS (SIN JAVASCRIPT)
-     ================================================================ -->
+
 <section class="form-container" style="align-items:flex-start; padding-top:60px;">
   <div class="form-wrapper animate-in">
 
@@ -45,7 +44,7 @@
     <input type="radio" name="login-tab" id="rb-login"   class="tab-radio" checked/>
     <input type="radio" name="login-tab" id="rb-recover" class="tab-radio"/>
 
-    <!-- BARRA DE PESTAÑAS -->
+    <!-- pestañas -->
     <div class="tab-bar">
       <label for="rb-login"   class="tab-label" id="tab-label-login">
         <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
@@ -55,9 +54,9 @@
       </label>
     </div>
 
-    <!-- ==================== -->
-    <!-- PANEL: LOGIN         -->
-    <!-- ==================== -->
+    
+    <!-- panel login -->
+    
     <div class="tab-pane-login">
       <div class="form-header" style="border-radius:0;">
         <i class="fas fa-lock"></i>
@@ -115,12 +114,12 @@
           </a>
         </div>
       </div>
-    </div><!-- /tab-pane-login -->
+    </div>
 
 
-    <!-- ======================== -->
-    <!-- PANEL: RECUPERAR CLAVE   -->
-    <!-- ======================== -->
+    
+    <!-- panel recuperar -->
+    
     <div class="tab-pane-recover">
       <div class="form-header" style="border-radius:0;">
         <i class="fas fa-key"></i>
@@ -136,7 +135,7 @@
       <input type="radio" name="recover-step" id="rs-2" class="step-radio"/>
       <input type="radio" name="recover-step" id="rs-3" class="step-radio"/>
 
-      <!-- INDICADORES DE PASO -->
+      <!-- indicadores -->
       <div class="recover-steps" style="display:flex; border-bottom:1px solid #f0ebe3;">
         <div class="step-ind recover-step" style="flex:1; text-align:center; padding:14px;">
           <div class="recover-step-num" style="display:block;">1</div>
@@ -152,7 +151,7 @@
         </div>
       </div>
 
-      <!-- PASO 1: Correo -->
+      <!-- paso 1 -->
       <div class="recover-pane recover-pane-1 form-main">
         <div class="alert alert-info">
           <i class="fas fa-envelope"></i>
@@ -176,7 +175,7 @@
         </div>
       </div>
 
-      <!-- PASO 2: Código -->
+      <!-- paso 2 -->
       <div class="recover-pane recover-pane-2 form-main">
         <div class="alert alert-success">
           <i class="fas fa-check-circle"></i>
@@ -197,7 +196,7 @@
         </div>
       </div>
 
-      <!-- PASO 3: Nueva contraseña -->
+      <!-- paso 3 -->
       <div class="recover-pane recover-pane-3 form-main">
         <div class="alert alert-success">
           <i class="fas fa-shield-alt"></i>
@@ -216,18 +215,22 @@
         </a>
       </div>
 
-    </div><!-- /tab-pane-recover -->
+    </div>
 
-  </div><!-- /form-wrapper -->
+  </div>
 </section>
 
-<!-- FOOTER -->
+<!-- footer -->
 <footer>
   <div class="footer-copy" style="border-top:none; padding-top:0;">
     © 2026 PNK Inmobiliaria — Todos los derechos reservados.
     <a href="index.html" style="color:#c9922a; margin-left:15px;">Volver al Inicio</a>
   </div>
 </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
 
 </body>
 </html>
