@@ -12,8 +12,7 @@ const API_BASE = 'api';
 async function apiCall(endpoint, options = {}) {
   const url = `${API_BASE}/${endpoint}`;
   const defaults = {
-    headers: { 'Content-Type': 'application/json' },
-    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' }
   };
   if (options.body instanceof FormData) {
     delete defaults.headers['Content-Type'];
@@ -28,7 +27,7 @@ async function apiCall(endpoint, options = {}) {
     return data;
   } catch (error) {
     console.error('Error en API:', error);
-    return { ok: false, message: 'Error de conexión con el servidor.' };
+    return { ok: false, message: 'Error de conexión: ' + error.message };
   }
 }
 

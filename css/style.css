@@ -1818,3 +1818,35 @@ footer {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+/* ========================================= */
+/* RESPONSIVE DESIGN (Añadido para Móviles) */
+/* ========================================= */
+@media (max-width: 1100px) {
+  .props-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
+  .footer-content { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+
+@media (max-width: 860px) {
+  .top-section { grid-template-columns: 1fr; padding: 20px; gap: 20px; }
+  .banner-hero { min-height: 300px; padding: 40px 30px; }
+  nav { flex-wrap: wrap; height: auto; padding: 15px 20px; justify-content: center; gap: 15px; }
+  .nav-links { flex-wrap: wrap; justify-content: center; }
+  .buscador-container { padding: 0 20px; }
+  .buscador-inner { flex-direction: column; align-items: stretch; gap: 15px; }
+  .btn-buscar { width: 100%; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .props-grid { grid-template-columns: 1fr; }
+  .stats-bar-inner { grid-template-columns: 1fr; gap: 20px; }
+  .footer-content { grid-template-columns: 1fr; text-align: center; }
+  .footer-brand p { margin: 12px auto; }
+  .propiedades-section { padding: 0 20px; }
+  .banner-hero h1 { font-size: 2.2rem; }
+  .banner-price { font-size: 1.8rem; }
+  .form-container { padding: 20px 10px; }
+  .auth-form { padding: 20px; }
+  .auth-header { padding: 20px; }
+}

@@ -107,26 +107,26 @@ CREATE TABLE IF NOT EXISTS solicitudes_visita (
 -- DATOS DE EJEMPLO
 -- ============================================================
 
--- Admin por defecto (password: admin123)
+-- Admin por defecto (password: Admin123) — Todos los usuarios usan esta misma clave
 INSERT INTO usuarios (rut, nombres, apellido_paterno, apellido_materno, email, telefono, fecha_nacimiento, sexo, password_hash, rol, estado, fecha_registro) VALUES
 ('12.345.678-9', 'Juan', 'García', 'Rodríguez', 'admin@pnk.cl', '+56 9 1234 5678', '1985-03-15', 'M',
- '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', 'activo', '2025-01-01 10:00:00');
+ '$2y$10$PgaaCzWS.ZER7WQJ2SWrCOsg0jCRbOu8ilEeoRk3KXRozhlyAjA5u', 'admin', 'activo', '2025-01-01 10:00:00');
 
 -- Propietarios
 INSERT INTO usuarios (rut, nombres, apellido_paterno, apellido_materno, email, telefono, fecha_nacimiento, sexo, password_hash, rol, estado, nro_bienes_raices, fecha_registro) VALUES
 ('23.456.789-0', 'María', 'López', 'Fernández', 'maria@correo.cl', '+56 9 8765 4321', '1990-07-22', 'F',
- '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'propietario', 'activo', 'BR-2025-00123456', '2025-02-15 14:30:00'),
+ '$2y$10$PgaaCzWS.ZER7WQJ2SWrCOsg0jCRbOu8ilEeoRk3KXRozhlyAjA5u', 'propietario', 'activo', 'BR-2025-00123456', '2025-02-15 14:30:00'),
 ('56.789.012-3', 'Roberto', 'Núñez', 'Vargas', 'roberto@correo.cl', '+56 9 9876 5432', '1978-11-03', 'M',
- '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'propietario', 'inactivo', 'BR-2025-00789012', '2025-01-05 09:15:00'),
+ '$2y$10$PgaaCzWS.ZER7WQJ2SWrCOsg0jCRbOu8ilEeoRk3KXRozhlyAjA5u', 'propietario', 'inactivo', 'BR-2025-00789012', '2025-01-05 09:15:00'),
 ('67.890.123-4', 'Ana', 'Martínez', 'Herrera', 'ana@correo.cl', '+56 9 2345 6789', '1995-05-18', 'F',
- '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'propietario', 'pendiente', 'BR-2026-00345678', '2026-04-20 11:00:00');
+ '$2y$10$PgaaCzWS.ZER7WQJ2SWrCOsg0jCRbOu8ilEeoRk3KXRozhlyAjA5u', 'propietario', 'pendiente', 'BR-2026-00345678', '2026-04-20 11:00:00');
 
 -- Gestores
 INSERT INTO usuarios (rut, nombres, apellido_paterno, apellido_materno, email, telefono, fecha_nacimiento, sexo, password_hash, rol, estado, penka_id, fecha_registro) VALUES
 ('34.567.890-1', 'Carlos', 'Muñoz', 'Silva', 'carlos@correo.cl', '+56 9 5678 9012', '1988-09-10', 'M',
- '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'gestor', 'activo', 'PENKA-00342', '2025-03-10 16:45:00'),
+ '$2y$10$PgaaCzWS.ZER7WQJ2SWrCOsg0jCRbOu8ilEeoRk3KXRozhlyAjA5u', 'gestor', 'activo', 'PENKA-00342', '2025-03-10 16:45:00'),
 ('45.678.901-2', 'Patricia', 'González', 'Díaz', 'patricia@correo.cl', '+56 9 3456 7890', '1992-01-25', 'F',
- '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'gestor', 'pendiente', NULL, '2026-04-18 08:20:00');
+ '$2y$10$PgaaCzWS.ZER7WQJ2SWrCOsg0jCRbOu8ilEeoRk3KXRozhlyAjA5u', 'gestor', 'pendiente', NULL, '2026-04-18 08:20:00');
 
 -- Propiedades
 INSERT INTO propiedades (codigo, tipo, provincia, comuna, sector, dormitorios, banos, area_terreno, area_construida, precio_pesos, precio_uf, descripcion, estado, bodega, estacionamiento, logia, cocina_amoblada, antejardin, patio_trasero, piscina, propietario_id, fecha_publicacion) VALUES

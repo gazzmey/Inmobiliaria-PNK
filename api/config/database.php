@@ -6,9 +6,16 @@
 
 // Credenciales de la base de datos
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'pnk_inmobiliaria');
 define('DB_USER', 'root');
-define('DB_PASS', '');       // XAMPP por defecto no tiene contraseña
+
+// Detectar si estamos en local (XAMPP) o en el servidor
+if (isset($_SERVER['SERVER_NAME']) && ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === '127.0.0.1')) {
+    define('DB_NAME', 'pnk_inmobiliaria'); // Nombre DB local
+    define('DB_PASS', '');                 // Contraseña XAMPP local
+} else {
+    define('DB_NAME', 'pnk');              // Nombre DB en servidor
+    define('DB_PASS', 'admin12345');       // Contraseña en servidor
+}
 define('DB_CHARSET', 'utf8mb4');
 
 /**
@@ -43,7 +50,9 @@ function getDB(): PDO {
  */
 function setApiHeaders(): void {
     header('Content-Type: application/json; charset=utf-8');
-    header('Access-Control-Allow-Origin: *');
+    $origin = $_SERVER['HTTP_ORIGIN'] ?? '*';
+    header("Access-Control-Allow-Origin: $origin");
+    header('Access-Control-Allow-Credentials: true');
     header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
     header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
